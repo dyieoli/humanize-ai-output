@@ -1,0 +1,4 @@
+interface:
+  display_name: "Humanize AI Output"
+  short_description: "Naturalize AI text, slides, and prompts"
+  default_prompt: "Use $humanize-ai-output to make this AI-generated draft feel more natural while preserving its meaning."

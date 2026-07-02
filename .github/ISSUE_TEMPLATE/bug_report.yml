@@ -1,0 +1,33 @@
+name: Bad rewrite or bug
+description: Report a rewrite that drifted, missed a pattern, or behaved unexpectedly.
+title: "[Bug] "
+labels: ["bug"]
+body:
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt
+      description: The prompt or task you gave the model.
+    validations:
+      required: true
+  - type: textarea
+    id: source
+    attributes:
+      label: Source output
+      description: The original AI-ish output.
+    validations:
+      required: true
+  - type: textarea
+    id: result
+    attributes:
+      label: Humanized result
+      description: The result produced with the skill.
+    validations:
+      required: true
+  - type: textarea
+    id: issue
+    attributes:
+      label: What went wrong?
+      description: Meaning drift, missed phrase, over-polish, wrong tone, layout issue, etc.
+    validations:
+      required: true

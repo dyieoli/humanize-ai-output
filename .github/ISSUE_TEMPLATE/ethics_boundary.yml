@@ -1,0 +1,18 @@
+name: Ethics or misuse concern
+description: Raise a concern about positioning, misuse, disclosure, or unsafe behavior.
+title: "[Ethics] "
+labels: ["ethics"]
+body:
+  - type: textarea
+    id: concern
+    attributes:
+      label: Concern
+      description: Describe the behavior, wording, or use case that worries you.
+    validations:
+      required: true
+  - type: textarea
+    id: suggestion
+    attributes:
+      label: Suggested change
+    validations:
+      required: false

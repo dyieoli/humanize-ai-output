@@ -1,0 +1,5 @@
+Before:
+A stunning cyberpunk night-market sci-fi festival poster with layered signs, wet pavement, food stalls, pedestrians, room for title typography in the upper-left area, cyan red and warm white neon lights, futuristic vibes, epic composition, detailed, sharp, 4K, masterpiece, no readable text.
+
+After:
+Poster background for a night-market sci-fi festival. Low-angle street view with layered signs, wet pavement, food stalls, and pedestrians partly silhouetted. Leave the upper-left third clear for typography. Neon palette limited to cyan, red, and warm white. Graphic poster style, crisp shapes, no readable text in the image.

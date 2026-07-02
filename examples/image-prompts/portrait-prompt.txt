@@ -1,0 +1,5 @@
+Before:
+Ultra-realistic cinematic portrait of a 29-year-old hardware founder in a workshop, sleeves rolled up, sitting near prototype parts and a half-open laptop, calm but tired expression, dramatic window lighting, 8K, masterpiece, highly detailed, shallow depth of field.
+
+After:
+Editorial portrait for a founder profile. A 29-year-old hardware founder sits at a cluttered workbench, sleeves rolled up, prototype parts and a half-open laptop nearby. Window light from the left, muted workshop background, 50mm portrait feel, natural skin texture, calm but tired expression, no text.

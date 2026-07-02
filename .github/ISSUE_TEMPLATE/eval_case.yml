@@ -1,0 +1,34 @@
+name: New evaluation case
+description: Suggest a new benchmark case for the eval set.
+title: "[Eval] "
+labels: ["eval"]
+body:
+  - type: dropdown
+    id: category
+    attributes:
+      label: Category
+      options:
+        - Chinese writing naturalization
+        - English and bilingual polish
+        - PPT and document de-templating
+        - Image prompt de-AI-styling
+    validations:
+      required: true
+  - type: textarea
+    id: prompt
+    attributes:
+      label: Prompt
+    validations:
+      required: true
+  - type: textarea
+    id: baseline
+    attributes:
+      label: Baseline AI-ish output
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What should improve?
+    validations:
+      required: true
