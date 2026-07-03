@@ -24,12 +24,12 @@
 
 **After**
 
-> We shipped the beta to 12 design partners this month. The useful signal is narrower than we expected: teams like the review workflow, but they still need cleaner admin controls before expanding usage. Next month is about activation, not new features.
+> We shipped the beta to 12 design partners this month. The main thing we learned is pretty specific: teams like the review workflow, and admin controls are still what stops a wider rollout. So for July, we should stay focused on activation and retention. New feature work can wait.
 
 **What changed**
 
 - Replaced investor-speak with milestones and friction.
-- Added a practical next-month focus.
+- Added a practical next-month focus with a less model-polished rhythm.
 - Kept the voice professional without generic polish.
 
 ## Bilingual Profile

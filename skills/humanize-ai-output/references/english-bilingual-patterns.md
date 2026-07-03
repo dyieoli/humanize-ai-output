@@ -14,6 +14,7 @@ Use this reference when English or bilingual output sounds inflated, translation
 | Translationese | realize transformation, build a closed-loop ecosystem, carry out optimization | Rewrite idiomatically in the target language |
 | Bilingual label stuffing | Chinese phrase followed by English phrase after every term | Define once, then use the audience-native term |
 | Register mismatch | Startup slang mixed with formal investor language | Pick a stable speaker and setting |
+| Over-compressed polish | Every sentence is crisp, executive, and final | Use editor-like connective phrasing: "what we learned is", "so for now", "can wait", "actually adopted" |
 
 ## Stock Phrase Replacements
 
@@ -23,6 +24,18 @@ Use this reference when English or bilingual output sounds inflated, translation
 - seamless -> smooth, low-friction, integrated
 - transformative -> material, significant, new, high-impact
 - long-term value -> margin, retention, cash flow, speed, adoption, or another real metric
+
+## Editor-Like English Moves
+
+Use these when a result is technically clean but still feels AI-polished:
+
+- Replace "The useful signal is..." with "The main thing we learned is..."
+- Replace "X is about Y, not Z" with "So for now, stay focused on Y. Z can wait."
+- Replace "internal tool adoption" with "getting internal tools actually adopted" when the tone allows it.
+- Replace "even if the date is tentative" with "even if the date is still moving."
+- Replace "Teams spend less time chasing context" with "instead of chasing context across tools."
+
+These are small human edits, not slang. Use them only when they fit the audience.
 
 ## Bilingual Guidance
 

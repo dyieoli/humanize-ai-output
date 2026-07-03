@@ -1,6 +1,6 @@
 # Humanize AI Output Test Report
 
-Date: 2026-07-02
+Date: 2026-07-03
 
 ## Method
 
@@ -23,7 +23,17 @@ Changes made after Iteration 1:
 
 ## Iteration 2
 
-Iteration 2 outputs below are the final recorded cases. They pass the rubric at a practical release bar: facts preserved, template language reduced, rhythm improved, and artifact-specific direction added.
+Iteration 2 improved factual preservation and artifact-specific direction, but several text cases still sounded too compressed and model-edited.
+
+## Iteration 3
+
+Manual review found that several outputs were cleaner but still too model-like. The issue was not factual drift; it was over-compression. Chinese cases needed a little more口语颗粒感, including light connectors such as `呢`, `总之`, `一来`, and `以免`. English cases needed a similar adjustment: less slogan-like polish, more editor-like connective phrasing such as `what we learned is`, `so for now`, `can wait`, and `actually adopted`.
+
+Changes made after Iteration 3:
+
+- Updated Chinese guidance to avoid turning every sentence into crisp judgment language.
+- Updated English guidance to use small human editorial connectors when the rewrite feels too sharp.
+- Re-tested Cases 2-8 and replaced the outputs below.
 
 ## Chinese writing naturalization
 
@@ -61,7 +71,7 @@ The rewrite preserves the provided module status, risk, date, and next-step logi
 
 **Humanized output**
 
-最近发现，能坚持下来的计划通常都不太漂亮。比如我以前会把晚上排满：运动、读书、复盘，一个都不想落下。结果三天就崩。现在只留一个动作，洗完澡看 10 页书，做完就算赢。自律这件事，先别追求热血，能重复更重要。
+最近发现，能坚持下来的计划通常都不太漂亮。比如我以前会把晚上排满：运动、读书、复盘，一个都不想落下。结果三天就崩。现在呢我只保留一个动作，洗完澡看 10 页书，做完就算赢。总之自律呢，一来不要只追求热血，重复、坚持才是最重要的。
 
 **Score**
 
@@ -69,7 +79,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Removed motivational cliche and replaced it with a concrete daily scene.
+Removed motivational cliche and kept a more conversational rhythm with light oral connectors.
 
 ### Case 3
 
@@ -83,7 +93,7 @@ Removed motivational cliche and replaced it with a concrete daily scene.
 
 **Humanized output**
 
-抱歉，这次确实让您多等了。我们已经查到问题出在订单状态没有及时同步，导致客服看到的信息滞后。今天 18:00 前我会给您更新处理结果；如果需要补发或退款，我们会直接按您的选择处理。这次耽误的时间我们会承担，不让您再来回沟通。
+抱歉，这次确实让您多等了。我们已经查到问题出在订单状态没有及时同步，导致客服看到的信息滞后。今天 18:00 前我会给您更新处理结果；如果需要补发或退款，我们会直接按您的选择处理。这次耽误的时间我们会来承担，以免让您再来回沟通。
 
 **Score**
 
@@ -91,7 +101,7 @@ Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Names the issue and next step. Avoids empty "高度重视".
+Names the issue and next step. The final sentence is less blunt and reads closer to customer-service Chinese.
 
 ### Case 4
 
@@ -105,7 +115,7 @@ Names the issue and next step. Avoids empty "高度重视".
 
 **Humanized output**
 
-这个标的现在不能只看行业 beta。更关键的是两件事：第一，订单是否能从试点进入批量交付；第二，毛利率在放量后能不能守住。如果后续公告只显示合作框架，没有交付节奏和收入确认，估值上很难继续给溢价。风险也不笼统说竞争，重点看大客户议价和替代供应商进入。
+这个标的现在不能只看行业 beta，更要关注订单能否从试点进入批量交付，以及毛利率在放量后能不能守住。如果后续公告只显示合作框架，没有交付节奏和收入确认，估值上很难继续给溢价。风险也不笼统说竞争，重点还要看大客户议价和替代供应商进入。
 
 **Score**
 
@@ -113,7 +123,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Turns a generic thesis into testable variables.
+Turns a generic thesis into testable variables while avoiding a too-obvious model structure like "更关键的是两件事".
 
 ## English and bilingual polish
 
@@ -129,7 +139,7 @@ We are pleased to share that our team shipped the beta to 12 design partners thi
 
 **Humanized output**
 
-We shipped the beta to 12 design partners this month. The useful signal is narrower than we expected: teams like the review workflow, but admin controls are still blocking wider rollout. July is about activation and retention, not adding another feature set.
+We shipped the beta to 12 design partners this month. The main thing we learned is pretty specific: teams like the review workflow, and admin controls are still what stops a wider rollout. So for July, we should stay focused on activation and retention. New feature work can wait.
 
 **Score**
 
@@ -137,7 +147,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Preserves the beta, design partner count, review-workflow signal, admin-control blocker, and July focus.
+Preserves the beta, design partner count, review-workflow signal, admin-control blocker, and July focus. The rewrite now sounds more like an edited founder update than a polished model summary.
 
 ### Case 6
 
@@ -151,7 +161,7 @@ I am a passionate and results-driven professional with rich experience in AI pro
 
 **Humanized output**
 
-I build AI product workflows for teams that need less manual review and faster handoffs. My work sits between product strategy, prompt design, and internal tool adoption.
+I work on AI product workflows for teams that are trying to cut manual review and speed up handoffs. Most of my work sits between product strategy, prompt design, and getting internal tools actually adopted.
 
 **Score**
 
@@ -159,7 +169,7 @@ Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Removes resume cliches and smooths the bilingual mix into natural English.
+Removes resume cliches and smooths the bilingual mix into natural English, while keeping a less inflated profile voice.
 
 ### Case 7
 
@@ -175,7 +185,7 @@ Dear Sarah, I hope this email finds you well. I am writing to follow up on the r
 
 Hi Sarah,
 
-I wanted to follow up on the rollout plan we discussed last week. Do you have a rough timing update, even if the date is still tentative? It would help us decide whether to hold the engineering slot for next sprint.
+Just following up on the rollout plan from last week. Do you have a rough timing update, even if the date is still moving? It would help us decide whether to hold the engineering slot for next sprint.
 
 Best,
 
@@ -185,7 +195,7 @@ Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Keeps warmth but makes the business reason clear.
+Keeps warmth, removes the robotic opening, and uses a more natural phrase for uncertainty.
 
 ### Case 8
 
@@ -199,7 +209,7 @@ Our platform helps enterprise operations teams realize intelligent transformatio
 
 **Humanized output**
 
-Our platform helps operations teams turn scattered approvals, files, and status updates into one trackable workflow. Teams spend less time chasing context and more time closing the work.
+Our platform gives operations teams one place to track approvals, files, and status updates. So instead of chasing context across tools, they can see what is stuck and close the work faster.
 
 **Score**
 
@@ -207,7 +217,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Replaces Chinglish abstractions with a product value statement.
+Replaces Chinglish abstractions with a product value statement that has a more natural connective rhythm.
 
 ## PPT and document de-templating
 
@@ -408,7 +418,7 @@ Average strengths:
 
 - Template reduction: consistently strong across all categories.
 - Natural rhythm: strongest in Chinese social/client writing and English email use cases.
-- Specificity: strong after Iteration 2 because PPT and image prompt references force concrete actions, layout, or composition.
+- Specificity: strong after Iteration 3 because PPT and image prompt references force concrete actions, while text cases now keep more natural connective phrasing.
 
 Remaining limitations:
 

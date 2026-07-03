@@ -63,8 +63,8 @@ def check_skill_metadata() -> None:
 
 def check_references() -> None:
     references = {
-        "chinese-style-patterns.md": ["不是", "而是", "口语", "连接"],
-        "english-bilingual-patterns.md": ["bilingual", "translationese", "rhythm"],
+        "chinese-style-patterns.md": ["不是", "而是", "口语", "连接", "口语颗粒感"],
+        "english-bilingual-patterns.md": ["bilingual", "translationese", "rhythm", "editor-like"],
         "design-and-ppt-patterns.md": ["PPT", "layout", "hierarchy"],
         "image-prompt-patterns.md": ["image prompt", "composition", "lighting"],
         "variation-recipes.md": ["variation", "seed", "recipe"],
@@ -167,6 +167,18 @@ def check_evals() -> None:
     require_count(report, r"\*\*Humanized output\*\*", 10, "humanized outputs")
     require(report, "Iteration 1", "iteration log")
     require(report, "Iteration 2", "iteration log")
+    require(report, "Iteration 3", "iteration log")
+    for phrase in [
+        "现在呢我只保留一个动作",
+        "总之自律呢，一来不要只追求热血，重复、坚持才是最重要的",
+        "这次耽误的时间我们会来承担，以免让您再来回沟通",
+        "这个标的现在不能只看行业 beta，更要关注订单能否从试点进入批量交付",
+        "New feature work can wait.",
+        "actually adopted",
+        "even if the date is still moving",
+        "instead of chasing context across tools",
+    ]:
+        require(report, phrase, "preferred humanized phrasing")
     require(rubric, "Meaning preservation", "rubric criterion")
     require(rubric, "Template reduction", "rubric criterion")
 
