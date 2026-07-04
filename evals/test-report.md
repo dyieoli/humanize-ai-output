@@ -87,6 +87,10 @@ Changes made after Iteration 6:
 
 Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 The rewrite preserves the provided module status, risk, date, and next-step logic while keeping a more natural report-style word order.
@@ -108,6 +112,10 @@ The rewrite preserves the provided module status, risk, date, and next-step logi
 **Score**
 
 Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
 
 **Notes**
 
@@ -131,6 +139,10 @@ Removed motivational cliche and kept a more conversational rhythm with light ora
 
 Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 Names the issue and next step. The final sentence is less blunt and reads closer to customer-service Chinese.
@@ -152,6 +164,10 @@ Names the issue and next step. The final sentence is less blunt and reads closer
 **Score**
 
 Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
 
 **Notes**
 
@@ -177,6 +193,10 @@ The useful signal now is whether those 12 design partners keep using the review 
 
 Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 Preserves the beta, design partner count, review-workflow signal, admin-control blocker, and July focus. The rewrite now uses direct affirmative framing instead of a quoted or negative-first pivot.
@@ -198,6 +218,10 @@ I work on AI product workflows for teams trying to cut manual review and speed u
 **Score**
 
 Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
 
 **Notes**
 
@@ -225,6 +249,10 @@ Best,
 
 Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 Keeps warmth, removes the robotic opening, and uses a more natural phrase for uncertainty and planning.
@@ -246,6 +274,10 @@ Operations teams get one place to track approvals, files, and status updates, so
 **Score**
 
 Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
 
 **Notes**
 
@@ -275,6 +307,10 @@ Turn this slide into a sharper executive slide.
 
 Meaning 4, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 Turns background/challenge/strategy/outlook into a decision slide while preserving the category, 6-to-9-month feature-gap pressure, workflow-depth advantage, and retention priority.
@@ -297,6 +333,10 @@ Rewrite this strategy document opening so it does not sound like a template.
 
 Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 Starts with business tension instead of era framing.
@@ -318,6 +358,10 @@ Humanize this meeting summary for senior stakeholders.
 **Score**
 
 Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
 
 **Notes**
 
@@ -348,6 +392,10 @@ De-template this consulting recommendation slide.
 
 Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 Turns abstract dimensions into sequence, owner logic, and a measurable first move.
@@ -372,6 +420,10 @@ Editorial portrait for a founder profile. A 29-year-old hardware founder sits at
 
 Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 Replaces quality tags with art direction.
@@ -393,6 +445,10 @@ Product render for a premium home espresso machine. Brushed stainless steel body
 **Score**
 
 Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
 
 **Notes**
 
@@ -416,6 +472,10 @@ Candid travel photo on a narrow side street in Porto after light rain. A woman i
 
 Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
 
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
 **Notes**
 
 Replaces stock-photo perfection with location, framing, posture, and environmental detail.
@@ -437,6 +497,10 @@ Poster background for a night-market sci-fi festival. Low-angle street view with
 **Score**
 
 Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
 
 **Notes**
 
