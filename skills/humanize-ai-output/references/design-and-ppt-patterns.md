@@ -21,11 +21,17 @@ Use this reference for PPT, document, report, landing-page copy, design briefs, 
 - Turn topic titles into claim titles.
   - Before: "Market Opportunity"
   - After: "The opportunity is real, but adoption is stuck at workflow integration"
+- Prefer affirmative slide titles over habit-breaking negatives.
+  - Before: "Don't add more AI tools yet"
+  - After: "寻找进度卡壳点"
 - Replace four abstract dimensions with sequence.
   - Before: "organization / process / technology / data"
   - After: "First fix ownership, then standardize handoffs, then automate the repeated checks"
 - Replace generic recommendations with action rows.
   - Owner, next step, input needed, deadline, risk, success signal.
+- Avoid repeated `label: explanation` bullets when the label is decorative. Use direct bullets or a dash for metric labels.
+  - Before: "30 天内只看一个指标：一次交接到底少花多少时间。"
+  - After: "30天重点关注指标—交接消耗时间。"
 - Use tables when the reader needs comparison.
 - Use timelines when the reader needs sequencing.
 - Use annotated screenshots when the reader needs to see the product or workflow.

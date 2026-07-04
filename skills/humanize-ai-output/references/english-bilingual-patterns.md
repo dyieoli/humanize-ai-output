@@ -14,8 +14,11 @@ Use this reference when English or bilingual output sounds inflated, translation
 | Translationese | realize transformation, build a closed-loop ecosystem, carry out optimization | Rewrite idiomatically in the target language |
 | Bilingual label stuffing | Chinese phrase followed by English phrase after every term | Define once, then use the audience-native term |
 | Register mismatch | Startup slang mixed with formal investor language | Pick a stable speaker and setting |
-| Over-compressed polish | Every sentence is crisp, executive, and final | Use editor-like connective phrasing: "what we learned is", "so for now", "can wait", "actually adopted" |
-| Too-neat framing | The rewrite sounds like a perfect memo headline rather than a person revising a sentence | Use softer pivots: "probably is not the useful framing anymore", "what matters now is", "that means", "the product does not need..." |
+| Over-compressed polish | Every sentence is crisp, executive, and final | Use editor-like connective phrasing with concrete subjects and next actions. |
+| Too-neat framing | The rewrite sounds like a perfect memo headline rather than a person revising a sentence | Use softer affirmative pivots: current focus, next step, concrete subject, and decision. |
+| Negative-first contrast | Opens by rejecting a phrase before stating the useful claim | Start with the positive claim. Use negative contrast only when naming a specific rejected option matters. |
+| Quoted framing labels | Uses quoted concepts as the main explanation, such as a quoted slogan or label | Remove quote wrappers and write the claim directly. |
+| Colon-led explanation | Uses `claim: explanation` repeatedly | Split into normal sentences or use a dash only when the label is a real field. |
 
 ## Stock Phrase Replacements
 
@@ -26,17 +29,18 @@ Use this reference when English or bilingual output sounds inflated, translation
 - transformative -> material, significant, new, high-impact
 - long-term value -> margin, retention, cash flow, speed, adoption, or another real metric
 
-## Editor-Like English Moves
+## Direct English Moves
 
 Use these when a result is technically clean but still feels AI-polished:
 
-- Replace "The useful signal is..." with "The main thing we learned is..."
-- Replace "X is about Y, not Z" with "So for now, stay focused on Y. Z can wait."
-- Replace a too-clean thesis with "X probably is not the useful framing anymore. What matters now is..."
-- Replace "internal tool adoption" with "getting internal tools actually adopted" when the tone allows it.
-- Replace "even if the date is tentative" with "even if the date is still moving."
-- Replace "Teams spend less time chasing context" with "instead of chasing context across tools."
-- Replace product-site abstraction with "the product does not need the [abstract phrase] language" in internal rewrite notes or direct drafts.
+- Replace a quoted or negative-first frame with a direct claim.
+- Replace colon-led question framing with "Next step we should focus on whether..."
+- Replace broad contrast with a positive next action.
+- Replace too-clean thesis wording with "The useful signal now is..."
+- Replace abstract adoption wording with "getting internal tools actually adopted" when the tone allows it.
+- Replace tentative timing wording with "Even if the date is still moving..."
+- Replace abstract efficiency claims with "instead of chasing context across tools."
+- Replace product-site abstraction by naming the user, object, and outcome directly.
 
 These are small human edits, not slang. Use them only when they fit the audience.
 

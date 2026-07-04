@@ -37,7 +37,8 @@ Do not claim to bypass AI detection, falsify authorship, fabricate human experie
    - Vary sentence length and paragraph weight.
    - Keep enough friction: specific constraints, tradeoffs, real-world detail, and natural imperfection.
    - For Chinese, avoid over-polishing every sentence into crisp model-like judgments. Keep light connective words and natural time adverbs such as `呢`, `总之`, `一来`, `以免`, `现在`, `可能就要`, `那么`, or `一起` when they match the user's voice.
-   - For English, prefer editor-like phrasing when the first rewrite feels too sharp: `probably is not the useful framing anymore`, `what matters now is`, `so for now`, `can wait`, `actually adopted`, `still moving`.
+   - For English, prefer direct affirmative claims. Avoid quoted framing labels, `X is not Y, it is Z` structures, and colon-led explanation sentences when a plain sentence works.
+   - If using a negative contrast, make the rejected object specific and necessary; otherwise start from the positive claim.
 6. Run the final check:
    - Meaning preserved.
    - No invented facts, metrics, personal experience, or source references.

@@ -39,13 +39,23 @@ Changes made after Iteration 3:
 
 Manual review found one more layer: even after adding oral connectors, the model still tended to normalize word order too much. Better Chinese outputs sometimes keep a slightly imperfect but natural order, such as `本周主要我们推进有三件事`, `支付回调现在卡在`, `可能就要`, and `我今天会`. The investment case also needed a softer shift away from `行业 beta` instead of the model-like `这个标的现在不能只看...`.
 
-English cases were adjusted in the same direction: less perfect memo framing, more natural revision language such as `probably is not the useful framing anymore`, `what matters now is`, and `the product does not need...`.
+English cases were adjusted in the same direction: less perfect memo framing, more natural revision language with softer pivots and concrete next actions.
 
 Changes made after Iteration 4:
 
 - Updated Chinese guidance to preserve natural time adverbs and non-over-smoothed word order.
 - Updated English guidance to use softer pivots when a sentence sounds too neatly framed.
 - Re-tested Cases 1 and 4-8 and replaced the outputs below.
+
+## Iteration 5
+
+Manual review found that Iteration 4 still leaned on structures that should be avoided: quoted framing labels, negative-first contrast, colon-led explanations, and habit-breaking PPT titles. The newer direction is to state the positive claim directly. If a negative contrast is necessary, it must name the specific rejected object and should not become the whole sentence pattern.
+
+Changes made after Iteration 5:
+
+- Updated English guidance to avoid quoted framing labels and negative-first `not X, but Y` structures.
+- Updated PPT guidance to avoid habit-breaking negative titles and repeated `label: explanation` bullets.
+- Re-tested Cases 5-9 and added `review-feedback-2026-07-04.md` with 10 fresh cases.
 
 ## Chinese writing naturalization
 
@@ -151,7 +161,7 @@ We are pleased to share that our team shipped the beta to 12 design partners thi
 
 **Humanized output**
 
-The beta headline probably is not the useful framing anymore. What matters now is whether those 12 design partners keep using the review workflow, and whether admin controls stop blocking rollout. If July is about activation and retention, keep the team there. New feature work can wait.
+The useful signal now is whether those 12 design partners keep using the review workflow after the first try, or whether it is still mostly interesting in a demo. Next step we should focus on whether admin controls stop blocking rollout. If July is about activation and retention, keep the team there. New feature work can wait.
 
 **Score**
 
@@ -159,7 +169,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Preserves the beta, design partner count, review-workflow signal, admin-control blocker, and July focus. The rewrite now uses a softer pivot instead of a too-perfect update summary.
+Preserves the beta, design partner count, review-workflow signal, admin-control blocker, and July focus. The rewrite now uses direct affirmative framing instead of a quoted or negative-first pivot.
 
 ### Case 6
 
@@ -173,7 +183,7 @@ I am a passionate and results-driven professional with rich experience in AI pro
 
 **Humanized output**
 
-The old AI product innovation line is doing too much work. I work on AI product workflows for teams trying to cut manual review and speed up handoffs, mostly around product strategy, prompt design, and getting internal tools actually adopted.
+I work on AI product workflows for teams trying to cut manual review and speed up handoffs. The work usually sits where product strategy turns into prompt design and getting internal tools actually adopted.
 
 **Score**
 
@@ -181,7 +191,7 @@ Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Removes resume cliches and smooths the bilingual mix into natural English, while preserving a human edit note rhythm.
+Removes resume cliches and smooths the bilingual mix into natural English, while avoiding a negative-first critique of the original line.
 
 ### Case 7
 
@@ -221,7 +231,7 @@ Our platform helps enterprise operations teams realize intelligent transformatio
 
 **Humanized output**
 
-For this website copy, the product does not need the intelligent transformation language. It gives operations teams one place to track approvals, files, and status updates, so they can see what is stuck instead of chasing context across tools.
+Operations teams get one place to track approvals, files, and status updates, so they can see what is stuck instead of chasing context across tools. The result is a clearer handoff path and fewer status checks scattered across the week.
 
 **Score**
 
@@ -229,7 +239,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Replaces Chinglish abstractions with a product value statement and keeps a light editorial cue about what was removed.
+Replaces Chinglish abstractions with a direct product value statement.
 
 ## PPT and document de-templating
 
@@ -430,7 +440,7 @@ Average strengths:
 
 - Template reduction: consistently strong across all categories.
 - Natural rhythm: strongest in Chinese social/client writing and English email use cases.
-- Specificity: strong after Iteration 4 because PPT and image prompt references force concrete actions, while text cases now keep more natural connective phrasing and less over-smoothed word order.
+- Specificity: strong after Iteration 5 because PPT and image prompt references force concrete actions, while text cases now keep direct affirmative claims without over-smoothed word order.
 
 Remaining limitations:
 

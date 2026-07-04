@@ -152,6 +152,7 @@ def check_evals() -> None:
     prompts = read(ROOT / "evals" / "prompts.md")
     report = read(ROOT / "evals" / "test-report.md")
     rubric = read(ROOT / "evals" / "rubric.md")
+    review = read(ROOT / "evals" / "review-feedback-2026-07-04.md")
 
     for category in [
         "Chinese writing naturalization",
@@ -169,6 +170,7 @@ def check_evals() -> None:
     require(report, "Iteration 2", "iteration log")
     require(report, "Iteration 3", "iteration log")
     require(report, "Iteration 4", "iteration log")
+    require(report, "Iteration 5", "iteration log")
     for phrase in [
         "本周主要我们推进有三件事",
         "支付回调现在卡在风控规则上",
@@ -179,16 +181,41 @@ def check_evals() -> None:
         "这次耽误的时间我们会来承担，以免让您再来回沟通",
         "行业 beta现在可能不合适了，要看看这些订单能否从试点进入批量交付",
         "那么估值上就很难继续给溢价",
-        "The beta headline probably is not the useful framing anymore.",
-        "what matters now is whether those 12 design partners keep using the review workflow",
-        "The old AI product innovation line is doing too much work.",
+        "The useful signal now is whether those 12 design partners keep using the review workflow",
+        "I work on AI product workflows for teams trying to cut manual review",
         "Even if the date is still moving",
-        "the product does not need the intelligent transformation language",
+        "Operations teams get one place to track approvals, files, and status updates",
         "New feature work can wait.",
         "actually adopted",
         "instead of chasing context across tools",
     ]:
         require(report, phrase, "preferred humanized phrasing")
+
+    for phrase in [
+        "# Review Feedback Cases - 2026-07-04",
+        "## Forbidden Structures",
+        "Do not open with a negative contrast before the positive claim.",
+        "Avoid quoted framing labels as the main explanation.",
+        "Avoid colon-led explanation sentences when a direct sentence works.",
+        "寻找进度卡壳点",
+        "构建持续重复工作流程",
+        "30天重点关注指标—交接消耗时间",
+        "该指标应是重点优先关注对象，或许比一昧接入AI工具更能提升效率",
+        "Next step we should focus on whether teams come back to the workflow after the first try",
+        "Operations teams get one place to track approvals, files, and status updates",
+    ]:
+        require(review, phrase, "review feedback eval coverage")
+
+    for forbidden in [
+        "does not need the",
+        "The old AI product innovation line is doing too much work",
+        "The beta headline probably is not the useful framing anymore",
+        "标题：先别",
+        "第一阶段不建议",
+        "30 天内只看一个指标：",
+    ]:
+        if forbidden.lower() in review.lower() or forbidden.lower() in report.lower():
+            raise AssertionError(f"Forbidden reviewed structure remains: {forbidden}")
     require(rubric, "Meaning preservation", "rubric criterion")
     require(rubric, "Template reduction", "rubric criterion")
 
