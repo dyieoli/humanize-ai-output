@@ -15,6 +15,7 @@ Use this reference when English or bilingual output sounds inflated, translation
 | Bilingual label stuffing | Chinese phrase followed by English phrase after every term | Define once, then use the audience-native term |
 | Register mismatch | Startup slang mixed with formal investor language | Pick a stable speaker and setting |
 | Over-compressed polish | Every sentence is crisp, executive, and final | Use editor-like connective phrasing: "what we learned is", "so for now", "can wait", "actually adopted" |
+| Too-neat framing | The rewrite sounds like a perfect memo headline rather than a person revising a sentence | Use softer pivots: "probably is not the useful framing anymore", "what matters now is", "that means", "the product does not need..." |
 
 ## Stock Phrase Replacements
 
@@ -31,9 +32,11 @@ Use these when a result is technically clean but still feels AI-polished:
 
 - Replace "The useful signal is..." with "The main thing we learned is..."
 - Replace "X is about Y, not Z" with "So for now, stay focused on Y. Z can wait."
+- Replace a too-clean thesis with "X probably is not the useful framing anymore. What matters now is..."
 - Replace "internal tool adoption" with "getting internal tools actually adopted" when the tone allows it.
 - Replace "even if the date is tentative" with "even if the date is still moving."
 - Replace "Teams spend less time chasing context" with "instead of chasing context across tools."
+- Replace product-site abstraction with "the product does not need the [abstract phrase] language" in internal rewrite notes or direct drafts.
 
 These are small human edits, not slang. Use them only when they fit the audience.
 

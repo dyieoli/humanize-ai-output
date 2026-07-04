@@ -1,6 +1,6 @@
 # Humanize AI Output Test Report
 
-Date: 2026-07-03
+Date: 2026-07-04
 
 ## Method
 
@@ -35,6 +35,18 @@ Changes made after Iteration 3:
 - Updated English guidance to use small human editorial connectors when the rewrite feels too sharp.
 - Re-tested Cases 2-8 and replaced the outputs below.
 
+## Iteration 4
+
+Manual review found one more layer: even after adding oral connectors, the model still tended to normalize word order too much. Better Chinese outputs sometimes keep a slightly imperfect but natural order, such as `本周主要我们推进有三件事`, `支付回调现在卡在`, `可能就要`, and `我今天会`. The investment case also needed a softer shift away from `行业 beta` instead of the model-like `这个标的现在不能只看...`.
+
+English cases were adjusted in the same direction: less perfect memo framing, more natural revision language such as `probably is not the useful framing anymore`, `what matters now is`, and `the product does not need...`.
+
+Changes made after Iteration 4:
+
+- Updated Chinese guidance to preserve natural time adverbs and non-over-smoothed word order.
+- Updated English guidance to use softer pivots when a sentence sounds too neatly framed.
+- Re-tested Cases 1 and 4-8 and replaced the outputs below.
+
 ## Chinese writing naturalization
 
 ### Case 1
@@ -49,7 +61,7 @@ Changes made after Iteration 3:
 
 **Humanized output**
 
-本周主要推进了三件事：登录模块已经和后端联调完，数据看板的口径还差财务确认，支付回调卡在风控规则上。比较影响排期的是第二项，如果周三前拿不到确认，测试包可能要顺延一天。我会今天把待确认项列给财务和风控，明天下午同步结果。
+本周主要我们推进有三件事：登录模块已经和后端联调完，数据看板的口径还差财务确认，支付回调现在卡在风控规则上。比较影响排期的是第二项，如果周三前拿不到确认，测试包可能就要顺延一天。我今天会把待确认项列给财务和风控，明天下午一起同步结果。
 
 **Score**
 
@@ -57,7 +69,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-The rewrite preserves the provided module status, risk, date, and next-step logic while removing empty project-management language.
+The rewrite preserves the provided module status, risk, date, and next-step logic while keeping a more natural report-style word order.
 
 ### Case 2
 
@@ -115,7 +127,7 @@ Names the issue and next step. The final sentence is less blunt and reads closer
 
 **Humanized output**
 
-这个标的现在不能只看行业 beta，更要关注订单能否从试点进入批量交付，以及毛利率在放量后能不能守住。如果后续公告只显示合作框架，没有交付节奏和收入确认，估值上很难继续给溢价。风险也不笼统说竞争，重点还要看大客户议价和替代供应商进入。
+行业 beta现在可能不合适了，要看看这些订单能否从试点进入批量交付，以及毛利率在放量后能不能守住。如果后续公告只显示合作框架，没有交付节奏和收入确认，那么估值上就很难继续给溢价。风险也还要看大客户议价和替代供应商进入。
 
 **Score**
 
@@ -123,7 +135,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Turns a generic thesis into testable variables while avoiding a too-obvious model structure like "更关键的是两件事".
+Turns a generic thesis into testable variables while avoiding a too-obvious model structure like "这个标的现在不能只看".
 
 ## English and bilingual polish
 
@@ -139,7 +151,7 @@ We are pleased to share that our team shipped the beta to 12 design partners thi
 
 **Humanized output**
 
-We shipped the beta to 12 design partners this month. The main thing we learned is pretty specific: teams like the review workflow, and admin controls are still what stops a wider rollout. So for July, we should stay focused on activation and retention. New feature work can wait.
+The beta headline probably is not the useful framing anymore. What matters now is whether those 12 design partners keep using the review workflow, and whether admin controls stop blocking rollout. If July is about activation and retention, keep the team there. New feature work can wait.
 
 **Score**
 
@@ -147,7 +159,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Preserves the beta, design partner count, review-workflow signal, admin-control blocker, and July focus. The rewrite now sounds more like an edited founder update than a polished model summary.
+Preserves the beta, design partner count, review-workflow signal, admin-control blocker, and July focus. The rewrite now uses a softer pivot instead of a too-perfect update summary.
 
 ### Case 6
 
@@ -161,7 +173,7 @@ I am a passionate and results-driven professional with rich experience in AI pro
 
 **Humanized output**
 
-I work on AI product workflows for teams that are trying to cut manual review and speed up handoffs. Most of my work sits between product strategy, prompt design, and getting internal tools actually adopted.
+The old AI product innovation line is doing too much work. I work on AI product workflows for teams trying to cut manual review and speed up handoffs, mostly around product strategy, prompt design, and getting internal tools actually adopted.
 
 **Score**
 
@@ -169,7 +181,7 @@ Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Removes resume cliches and smooths the bilingual mix into natural English, while keeping a less inflated profile voice.
+Removes resume cliches and smooths the bilingual mix into natural English, while preserving a human edit note rhythm.
 
 ### Case 7
 
@@ -185,7 +197,7 @@ Dear Sarah, I hope this email finds you well. I am writing to follow up on the r
 
 Hi Sarah,
 
-Just following up on the rollout plan from last week. Do you have a rough timing update, even if the date is still moving? It would help us decide whether to hold the engineering slot for next sprint.
+Just following up on the rollout plan from last week. Even if the date is still moving, do you have a rough window? It would help us decide whether to keep the engineering slot open for next sprint.
 
 Best,
 
@@ -195,7 +207,7 @@ Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Keeps warmth, removes the robotic opening, and uses a more natural phrase for uncertainty.
+Keeps warmth, removes the robotic opening, and uses a more natural phrase for uncertainty and planning.
 
 ### Case 8
 
@@ -209,7 +221,7 @@ Our platform helps enterprise operations teams realize intelligent transformatio
 
 **Humanized output**
 
-Our platform gives operations teams one place to track approvals, files, and status updates. So instead of chasing context across tools, they can see what is stuck and close the work faster.
+For this website copy, the product does not need the intelligent transformation language. It gives operations teams one place to track approvals, files, and status updates, so they can see what is stuck instead of chasing context across tools.
 
 **Score**
 
@@ -217,7 +229,7 @@ Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics
 
 **Notes**
 
-Replaces Chinglish abstractions with a product value statement that has a more natural connective rhythm.
+Replaces Chinglish abstractions with a product value statement and keeps a light editorial cue about what was removed.
 
 ## PPT and document de-templating
 
@@ -418,7 +430,7 @@ Average strengths:
 
 - Template reduction: consistently strong across all categories.
 - Natural rhythm: strongest in Chinese social/client writing and English email use cases.
-- Specificity: strong after Iteration 3 because PPT and image prompt references force concrete actions, while text cases now keep more natural connective phrasing.
+- Specificity: strong after Iteration 4 because PPT and image prompt references force concrete actions, while text cases now keep more natural connective phrasing and less over-smoothed word order.
 
 Remaining limitations:
 

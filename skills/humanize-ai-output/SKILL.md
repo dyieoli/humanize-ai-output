@@ -36,8 +36,8 @@ Do not claim to bypass AI detection, falsify authorship, fabricate human experie
    - Ground claims in concrete subjects, actions, evidence, context, limits, or next steps.
    - Vary sentence length and paragraph weight.
    - Keep enough friction: specific constraints, tradeoffs, real-world detail, and natural imperfection.
-   - For Chinese, avoid over-polishing every sentence into crisp model-like judgments. Keep light connective words such as `呢`, `总之`, `一来`, or `以免` when they match the user's voice.
-   - For English, prefer editor-like phrasing when the first rewrite feels too sharp: `what we learned is`, `so for now`, `can wait`, `actually adopted`, `still moving`.
+   - For Chinese, avoid over-polishing every sentence into crisp model-like judgments. Keep light connective words and natural time adverbs such as `呢`, `总之`, `一来`, `以免`, `现在`, `可能就要`, `那么`, or `一起` when they match the user's voice.
+   - For English, prefer editor-like phrasing when the first rewrite feels too sharp: `probably is not the useful framing anymore`, `what matters now is`, `so for now`, `can wait`, `actually adopted`, `still moving`.
 6. Run the final check:
    - Meaning preserved.
    - No invented facts, metrics, personal experience, or source references.

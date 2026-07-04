@@ -24,12 +24,12 @@
 
 **After**
 
-> We shipped the beta to 12 design partners this month. The main thing we learned is pretty specific: teams like the review workflow, and admin controls are still what stops a wider rollout. So for July, we should stay focused on activation and retention. New feature work can wait.
+> The beta headline probably is not the useful framing anymore. What matters now is whether those 12 design partners keep using the review workflow, and whether admin controls stop blocking rollout. If July is about activation and retention, keep the team there. New feature work can wait.
 
 **What changed**
 
 - Replaced investor-speak with milestones and friction.
-- Added a practical next-month focus with a less model-polished rhythm.
+- Added a practical next-month focus with a softer, less model-polished pivot.
 - Kept the voice professional without generic polish.
 
 ## Bilingual Profile

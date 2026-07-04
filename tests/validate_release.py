@@ -168,14 +168,24 @@ def check_evals() -> None:
     require(report, "Iteration 1", "iteration log")
     require(report, "Iteration 2", "iteration log")
     require(report, "Iteration 3", "iteration log")
+    require(report, "Iteration 4", "iteration log")
     for phrase in [
+        "本周主要我们推进有三件事",
+        "支付回调现在卡在风控规则上",
+        "测试包可能就要顺延一天",
+        "我今天会把待确认项列给财务和风控",
         "现在呢我只保留一个动作",
         "总之自律呢，一来不要只追求热血，重复、坚持才是最重要的",
         "这次耽误的时间我们会来承担，以免让您再来回沟通",
-        "这个标的现在不能只看行业 beta，更要关注订单能否从试点进入批量交付",
+        "行业 beta现在可能不合适了，要看看这些订单能否从试点进入批量交付",
+        "那么估值上就很难继续给溢价",
+        "The beta headline probably is not the useful framing anymore.",
+        "what matters now is whether those 12 design partners keep using the review workflow",
+        "The old AI product innovation line is doing too much work.",
+        "Even if the date is still moving",
+        "the product does not need the intelligent transformation language",
         "New feature work can wait.",
         "actually adopted",
-        "even if the date is still moving",
         "instead of chasing context across tools",
     ]:
         require(report, phrase, "preferred humanized phrasing")
