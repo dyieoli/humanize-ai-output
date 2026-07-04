@@ -57,6 +57,16 @@ Changes made after Iteration 5:
 - Updated PPT guidance to avoid habit-breaking negative titles and repeated `label: explanation` bullets.
 - Re-tested Cases 5-9 and added `review-feedback-2026-07-04.md` with 10 fresh cases.
 
+## Iteration 6
+
+Manual review found two remaining leak paths: broad trailing `not` frames in English slide copy, and Chinese `问题不在...而在...` openings in document copy. Both now count as high-penalty structures in a second correction pass.
+
+Changes made after Iteration 6:
+
+- Added a 95-point penalty gate that counts forbidden structures before output is accepted.
+- Updated `ai_tone_lint.py --score` so broad contrast, negative-first, colon-led, quoted-label, and plus-stack patterns can fail automatically.
+- Re-tested Cases 9-11 and replaced the outputs below.
+
 ## Chinese writing naturalization
 
 ### Case 1
@@ -255,11 +265,11 @@ Turn this slide into a sharper executive slide.
 
 **Humanized output**
 
-**Slide title: Growth is no longer the question. Defensibility is.**
+**Retention features should lead the next segment plan**
 
-- The category is expanding, but new entrants are compressing feature gaps within 6 to 9 months.
-- Our current advantage is customer workflow depth, not model capability alone.
-- Decision needed: prioritize retention features for existing accounts before opening the next segment.
+- The category is still expanding, and new entrants are closing feature gaps within 6 to 9 months.
+- Customer workflow depth is the current advantage.
+- Prioritize retention features for existing accounts before opening the next segment.
 
 **Score**
 
@@ -281,7 +291,7 @@ Rewrite this strategy document opening so it does not sound like a template.
 
 **Humanized output**
 
-过去三个月，销售线索没有减少，但从试用到付费的转化明显变慢。问题不在获客，而在客户试用后的第一周：没人把使用数据、客户反馈和下一步动作串起来。这份方案先解决这个断点，再谈规模化。
+过去三个月，销售线索保持稳定，但从试用到付费的转化明显变慢。客户试用后的第一周需要重点梳理，使用数据、客户反馈和下一步动作现在没有串起来。这份方案优先处理这个断点，再看后续规模化。
 
 **Score**
 
@@ -303,7 +313,7 @@ Humanize this meeting summary for senior stakeholders.
 
 **Humanized output**
 
-今天会议定了两件事。第一，MVP 范围不再扩大，本周只保留登录、导入和基础看板。第二，数据口径由财务最终确认，产品不再自己做临时解释。还没定的是上线日期，取决于周四前能不能拿到真实数据样本。负责人：产品整理范围变更，财务确认口径，研发评估延期影响。
+今天会议定了两件事。第一，MVP 范围不再扩大，本周只保留登录、导入和基础看板。第二，数据口径由财务最终确认，产品不再自己做临时解释。还没定的是上线日期，取决于周四前能不能拿到真实数据样本。后续分工也先这样定，产品整理范围变更，财务确认口径，研发评估延期影响。
 
 **Score**
 
@@ -436,11 +446,29 @@ Adds purpose, composition, color constraints, typography space, and text handlin
 
 Final pass rate: 16 of 16 cases meet the rubric passing bar.
 
+## Penalty Gate Result
+
+Threshold: 95.
+
+Forbidden-structure counts across accepted humanized outputs:
+
+- Forced Chinese contrast: 0
+- Problem-not-in frame: 0
+- Negative-first opening: 0
+- Broad English negative contrast: 0
+- Trailing not-frame: 0
+- Not-alone contrast: 0
+- Colon-led label explanation: 0
+- Quoted framing label: 0
+- Plus-stack shorthand: 0
+
+All accepted humanized outputs scored at least 95. Any candidate below the threshold must be revised and scored again before delivery.
+
 Average strengths:
 
 - Template reduction: consistently strong across all categories.
 - Natural rhythm: strongest in Chinese social/client writing and English email use cases.
-- Specificity: strong after Iteration 5 because PPT and image prompt references force concrete actions, while text cases now keep direct affirmative claims without over-smoothed word order.
+- Specificity: strong after Iteration 6 because PPT and image prompt references force concrete actions, while the penalty gate now blocks broad contrast and label-like sentence structures before output is accepted.
 
 Remaining limitations:
 

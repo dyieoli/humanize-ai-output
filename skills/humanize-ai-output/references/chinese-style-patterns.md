@@ -19,6 +19,17 @@ Use this reference when Chinese output sounds stiff, slogan-like, translated, or
 | 过度顺滑 | 词序总是标准、书面、无停顿，例如“本周主要推进了三件事” | 正确但像编辑器统一润色过 | 在符合用户语感时保留轻微口语词序，例如“本周主要我们推进有三件事”“现在卡在”“可能就要” |
 | 否定开头 | 先说“不要/不需要/不建议”，再给真正建议 | 像在纠正读者，容易显得模板化 | 直接给肯定建议；需要否定时要说清楚具体否定对象 |
 | 冒号解释 | 高频使用“标题：内容”“问题：解释”“指标：解释” | 看起来像生成式提纲 | 改成直接句，或用破折号连接真正的指标名 |
+| 问题不在框架 | “问题不在 A，而在 B” | 比普通强对照更像模板化判断，尤其出现在段落开头 | 直接写重点对象，再说明原因，例如“客户试用后的第一周需要重点梳理” |
+
+## Penalty Gate
+
+Humanized output must pass a second correction pass before it is shown.
+
+- Start from 100 points. Passing threshold is 95.
+- Count forbidden structures in the candidate output.
+- Major failures: `不是...而是...`, `是...而不是...`, `问题不在...而在...`, and broad negative-first advice. Each one should usually make the candidate fail.
+- Medium failures: repeated `标题：内容`, `问题：解释`, `指标：解释`, quoted labels, and `X + Y + Z` shorthand.
+- If the score is below 95, revise and rerun. Do not return the candidate yet.
 
 ## Rewrite Moves
 
@@ -30,6 +41,7 @@ Use this reference when Chinese output sounds stiff, slogan-like, translated, or
 - 投研或商业分析不要把所有句子都改成短促判断。可以把“不能只看...更关键的是...重点看...”合成更顺的一段：“行业 beta现在可能不合适了，要看看这些订单能否...那么估值上就很难...风险也还要看...”。
 - PPT 或建议页避免用“先别...”做标题，直接写肯定动作，例如“寻找进度卡壳点”。
 - 指标句少用“xxxx：xxxx”，可以写成“30天重点关注指标—交接消耗时间”。
+- 把“问题不在获客，而在客户试用后的第一周：没人把...”改成“客户试用后的第一周需要重点梳理，使用数据、客户反馈和下一步动作现在没有串起来。”
 - 把“项目稳步推进”改成“登录模块已联调完成，支付回调还差风控确认，预计周三给测试包。”
 
 ## Natural Connectors
@@ -58,5 +70,7 @@ Use lightly. Do not stack them.
 
 - 是否保留了事实、数字、人物、时间和限制条件。
 - 是否减少了强对比句式，尤其是“不是……而是……”和“是……而不是……”。
+- 是否消除了“问题不在……而在……”这类段落开头判断。
+- 是否通过 95 分惩罚门槛；没有通过就继续修改。
 - 是否把抽象词换成了动作、对象、指标或时点。
 - 语气是否自然，但没有变得油滑或过度口语化。

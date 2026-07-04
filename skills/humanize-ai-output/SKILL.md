@@ -39,7 +39,14 @@ Do not claim to bypass AI detection, falsify authorship, fabricate human experie
    - For Chinese, avoid over-polishing every sentence into crisp model-like judgments. Keep light connective words and natural time adverbs such as `呢`, `总之`, `一来`, `以免`, `现在`, `可能就要`, `那么`, or `一起` when they match the user's voice.
    - For English, prefer direct affirmative claims. Avoid quoted framing labels, `X is not Y, it is Z` structures, and colon-led explanation sentences when a plain sentence works.
    - If using a negative contrast, make the rejected object specific and necessary; otherwise start from the positive claim.
-6. Run the final check:
+6. Run the Penalty gate before showing the answer.
+   - If tools are available, run `scripts/ai_tone_lint.py --score` on the candidate humanized output.
+   - Passing threshold is 95. A score below 95 means revise and rerun the check.
+   - Count every forbidden structure before deciding: forced Chinese contrast, `问题不在...而在...`, negative-first advice, broad English `not...but...`, trailing `, not...`, `not...alone`, colon-led explanations, quoted framing labels, and `X + Y + Z` shorthand.
+   - Major contrast failures are high-penalty items. One broad `not model capability alone` or `问题不在获客，而在...` style sentence should usually fail the candidate.
+   - Keep looping: rewrite, rescore, and only return the output after the threshold passes.
+   - If no tool is available, do the same count manually and treat any major contrast or negative-first opening as a failed pass.
+7. Run the final check:
    - Meaning preserved.
    - No invented facts, metrics, personal experience, or source references.
    - No claim that the result is human-written or undetectable.
@@ -68,6 +75,10 @@ Prefer direct, natural phrasing over visible rhetorical machinery.
 Common AI-ish patterns to reduce:
 
 - Forced contrast: `不是 A, 而是 B`, `是 A, 而不是 B`, `not merely X but Y`.
+- Broad negative contrast: `问题不在 A, 而在 B`, `not X, but Y`, trailing `, not X`, and vague `not X alone`.
+- Negative-first advice: opening with `先别`, `不要`, `不需要`, `不建议`, `Do not`, or `Don't` before the useful recommendation.
+- Colon-led explanation: `标题：内容`, `Decision needed: ...`, `The next question is: ...`, or repeated label-plus-explanation lines.
+- Quoted framing labels and `X + Y + Z` shorthand when they carry the main explanation.
 - Template transitions: first/second/finally in short texts, `综上所述`, `值得注意的是`, `in today's fast-paced world`.
 - Abstract filler: empower, unlock, ecosystem, closed loop, transformative, robust, seamless, 赋能, 抓手, 闭环, 生态, 底层逻辑.
 - Even rhythm: similar sentence lengths, three tidy bullets everywhere, balanced paragraphs with no priority.

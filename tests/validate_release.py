@@ -12,6 +12,64 @@ import json
 
 ROOT = Path(__file__).resolve().parents[1]
 SKILL = ROOT / "skills" / "humanize-ai-output"
+PENALTY_THRESHOLD = 95
+
+PENALTY_PATTERNS = [
+    (
+        "CN_FORCED_CONTRAST",
+        "Chinese forced contrast",
+        r"不是[^。；\n]{1,80}而是|是[^。；\n]{1,80}而不是|问题不在[^。；\n]{1,80}而在",
+        40,
+    ),
+    (
+        "CN_NEGATIVE_FIRST",
+        "Chinese negative-first advice",
+        r"(^|[。！？\n])\s*(先别|不建议|不需要|不要)[^。！？\n]{1,80}",
+        25,
+    ),
+    (
+        "EN_BROAD_NEGATIVE_CONTRAST",
+        "English broad negative contrast",
+        r"\bnot\b[^.\n]{1,100}\b(?:but|rather than)\b",
+        40,
+    ),
+    (
+        "EN_TRAILING_NOT_FRAME",
+        "English trailing not-frame",
+        r",\s*not\s+[A-Za-z][^.\n]{1,100}",
+        35,
+    ),
+    (
+        "EN_NOT_ALONE",
+        "English not-alone contrast",
+        r"\bnot\b[^.\n]{0,80}\balone\b",
+        35,
+    ),
+    (
+        "COLON_LED_EXPLANATION",
+        "Colon-led explanation",
+        r"(?mi)^\s*(?:[-*]\s*)?(?:\*\*)?(?:标题|问题|指标|背景|挑战|策略|展望|痛点|方案|价值|负责人|decision needed|slide title|next question|question|metric|problem|strategy|value|background|challenge)\s*[:：]\s*[^:\n：]+",
+        20,
+    ),
+    (
+        "QUOTED_LABEL",
+        "Quoted framing label",
+        r"[\"“][^\"”\n]{2,50}[\"”]",
+        10,
+    ),
+    (
+        "PLUS_STACK",
+        "Plus-stack shorthand",
+        r"\S+\s*\+\s*\S+\s*\+\s*\S+",
+        15,
+    ),
+    (
+        "NEGATIVE_TITLE",
+        "Negative-first title",
+        r"(?mi)^\s*(?:#+\s*)?(?:\*\*)?(?:先别|不建议|不需要|不要|don't|do not)\b",
+        30,
+    ),
+]
 
 
 def read(path: Path) -> str:
@@ -29,6 +87,43 @@ def require_count(text: str, pattern: str, minimum: int, label: str) -> None:
     count = len(re.findall(pattern, text, flags=re.IGNORECASE | re.MULTILINE))
     if count < minimum:
         raise AssertionError(f"Expected at least {minimum} {label}, found {count}")
+
+
+def extract_humanized_blocks(text: str, label: str) -> list[str]:
+    blocks = [
+        match.group("body").strip()
+        for match in re.finditer(
+            r"\*\*Humanized output\*\*\s*\n\n(?P<body>.*?)(?=\n\n\*\*(?:Score|What changed|Notes)\*\*|\n### Case|\n## Case|\Z)",
+            text,
+            flags=re.DOTALL,
+        )
+    ]
+    if not blocks:
+        raise AssertionError(f"No humanized output blocks found in {label}")
+    return blocks
+
+
+def penalty_score(text: str) -> tuple[int, list[str]]:
+    penalty = 0
+    details: list[str] = []
+    for code, label, pattern, weight in PENALTY_PATTERNS:
+        count = len(re.findall(pattern, text, flags=re.IGNORECASE | re.DOTALL | re.MULTILINE))
+        if count:
+            penalty += count * weight
+            details.append(f"{code}={count} ({label}, -{count * weight})")
+    return max(0, 100 - penalty), details
+
+
+def require_humanized_penalty_gate(text: str, label: str) -> None:
+    for index, block in enumerate(extract_humanized_blocks(text, label), start=1):
+        score, details = penalty_score(block)
+        if score < PENALTY_THRESHOLD:
+            joined = "; ".join(details)
+            preview = block.replace("\n", " ")[:180]
+            raise AssertionError(
+                f"{label} humanized block {index} penalty score {score} is below "
+                f"{PENALTY_THRESHOLD}: {joined}. Preview: {preview}"
+            )
 
 
 def check_skill_metadata() -> None:
@@ -57,6 +152,9 @@ def check_skill_metadata() -> None:
         "sentence length",
         "layout",
         "composition",
+        "Penalty gate",
+        "95",
+        "revise and rerun",
     ]:
         require(body, phrase, "AI-ish pattern coverage")
 
@@ -129,6 +227,48 @@ def check_scripts() -> None:
     if not image_moves.issubset(allowed_image_moves):
         raise AssertionError(f"style_seed.py --task image emitted unrelated moves: {sorted(image_moves - allowed_image_moves)}")
 
+    clean_lint = subprocess.run(
+        [sys.executable, str(SKILL / "scripts" / "ai_tone_lint.py"), "--score"],
+        input="Customer workflow depth is the current advantage.",
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if clean_lint.returncode != 0:
+        raise AssertionError(f"ai_tone_lint.py --score must pass clean text: {clean_lint.stderr or clean_lint.stdout}")
+    clean_payload = json.loads(clean_lint.stdout)
+    if clean_payload.get("score") != 100 or clean_payload.get("passed") is not True:
+        raise AssertionError(f"ai_tone_lint.py --score must return a passing score for clean text: {clean_payload}")
+
+    bad_lint = subprocess.run(
+        [sys.executable, str(SKILL / "scripts" / "ai_tone_lint.py"), "--score"],
+        input="Our current advantage is customer workflow depth, not model capability alone.",
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if bad_lint.returncode == 0:
+        raise AssertionError("ai_tone_lint.py --score must fail broad trailing not-frames")
+    bad_payload = json.loads(bad_lint.stdout)
+    if bad_payload.get("score", 100) >= PENALTY_THRESHOLD:
+        raise AssertionError(f"ai_tone_lint.py --score must penalize broad trailing not-frames: {bad_payload}")
+
+    bad_cn_lint = subprocess.run(
+        [sys.executable, str(SKILL / "scripts" / "ai_tone_lint.py"), "--score"],
+        input="问题不在获客，而在客户试用后的第一周。",
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if bad_cn_lint.returncode == 0:
+        raise AssertionError("ai_tone_lint.py --score must fail Chinese problem-not-in frames")
+    bad_cn_payload = json.loads(bad_cn_lint.stdout)
+    if bad_cn_payload.get("score", 100) >= PENALTY_THRESHOLD:
+        raise AssertionError(f"ai_tone_lint.py --score must penalize Chinese problem-not-in frames: {bad_cn_payload}")
+
 
 def check_readme() -> None:
     body = read(ROOT / "README.md")
@@ -171,6 +311,17 @@ def check_evals() -> None:
     require(report, "Iteration 3", "iteration log")
     require(report, "Iteration 4", "iteration log")
     require(report, "Iteration 5", "iteration log")
+    require(report, "Iteration 6", "iteration log")
+    for phrase in [
+        "Penalty Gate Result",
+        "Threshold: 95",
+        "Forced Chinese contrast: 0",
+        "Problem-not-in frame: 0",
+        "Trailing not-frame: 0",
+        "Colon-led label explanation: 0",
+        "All accepted humanized outputs scored at least 95",
+    ]:
+        require(report, phrase, "penalty gate report")
     for phrase in [
         "本周主要我们推进有三件事",
         "支付回调现在卡在风控规则上",
@@ -181,6 +332,11 @@ def check_evals() -> None:
         "这次耽误的时间我们会来承担，以免让您再来回沟通",
         "行业 beta现在可能不合适了，要看看这些订单能否从试点进入批量交付",
         "那么估值上就很难继续给溢价",
+        "Retention features should lead the next segment plan",
+        "Customer workflow depth is the current advantage.",
+        "过去三个月，销售线索保持稳定，但从试用到付费的转化明显变慢",
+        "客户试用后的第一周需要重点梳理",
+        "后续分工也先这样定",
         "The useful signal now is whether those 12 design partners keep using the review workflow",
         "I work on AI product workflows for teams trying to cut manual review",
         "Even if the date is still moving",
@@ -213,9 +369,14 @@ def check_evals() -> None:
         "标题：先别",
         "第一阶段不建议",
         "30 天内只看一个指标：",
+        "Our current advantage is customer workflow depth, not model capability alone",
+        "Decision needed:",
+        "问题不在获客，而在客户试用后的第一周：",
     ]:
         if forbidden.lower() in review.lower() or forbidden.lower() in report.lower():
             raise AssertionError(f"Forbidden reviewed structure remains: {forbidden}")
+    require_humanized_penalty_gate(report, "evals/test-report.md")
+    require_humanized_penalty_gate(review, "evals/review-feedback-2026-07-04.md")
     require(rubric, "Meaning preservation", "rubric criterion")
     require(rubric, "Template reduction", "rubric criterion")
 

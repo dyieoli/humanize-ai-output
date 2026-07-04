@@ -15,6 +15,8 @@ Use this reference for PPT, document, report, landing-page copy, design briefs, 
 | Bullet overload | Paragraphs chopped into bullets | Keep one idea per bullet; move detail to notes or appendix |
 | Unanchored metrics | Big numbers without baseline, source, period, or implication | Add denominator, date, source, and why it matters |
 | Stock symmetry | 3 columns, 4 quadrants, centered title on every page | Let the slide type decide layout: decision, evidence, timeline, comparison, appendix |
+| Colon-led decision copy | `Decision needed: ...`, `问题：...`, `策略：...` | Write the decision or next action directly |
+| Negative-first slide title | Titles that start by telling the reader what not to do | Use an affirmative action title that names the focus |
 
 ## PPT Rewrite Moves
 
@@ -32,9 +34,17 @@ Use this reference for PPT, document, report, landing-page copy, design briefs, 
 - Avoid repeated `label: explanation` bullets when the label is decorative. Use direct bullets or a dash for metric labels.
   - Before: "30 天内只看一个指标：一次交接到底少花多少时间。"
   - After: "30天重点关注指标—交接消耗时间。"
+- Replace `Decision needed: prioritize retention features...` with a direct bullet such as "Prioritize retention features for existing accounts before opening the next segment."
 - Use tables when the reader needs comparison.
 - Use timelines when the reader needs sequencing.
 - Use annotated screenshots when the reader needs to see the product or workflow.
+
+## Penalty Gate For Slides And Documents
+
+- Passing threshold is 95.
+- High penalty: negative-first titles, broad contrast bullets, trailing `, not...` frames, and `问题不在...而在...`.
+- Medium penalty: decorative `label: explanation` bullets, quoted labels, and `A + B + C` shorthand.
+- If the candidate score is below 95, revise and rerun before showing the slide copy or document opening.
 
 ## Document De-Templating
 
@@ -60,3 +70,4 @@ For visual output:
 - Does layout reflect priority?
 - Are visual elements carrying information, or only decoration?
 - Would a designer know what to build without guessing?
+- Did the copy pass the 95-point penalty gate?
