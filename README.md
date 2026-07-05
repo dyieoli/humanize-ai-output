@@ -77,7 +77,7 @@ This skill targets the patterns that make AI output feel generic: over-balanced 
 Clone the repo and copy the skill folder into your Codex skills directory:
 
 ```bash
-git clone https://github.com/zhaoyun/humanize-ai-output.git
+git clone https://github.com/dyieoli/humanize-ai-output.git
 mkdir -p ~/.codex/skills
 cp -R humanize-ai-output/skills/humanize-ai-output ~/.codex/skills/
 ```

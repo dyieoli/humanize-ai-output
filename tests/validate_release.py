@@ -290,6 +290,7 @@ def check_readme() -> None:
         "50 common prompts",
         "50 eval cases are documented",
         "Penalty gate",
+        "https://github.com/dyieoli/humanize-ai-output.git",
     ]:
         require(body, phrase, "README coverage")
     for placeholder in ["<owner>", "<your", "YOUR_GITHUB_USERNAME"]:
