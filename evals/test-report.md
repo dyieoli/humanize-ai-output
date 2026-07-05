@@ -67,6 +67,16 @@ Changes made after Iteration 6:
 - Updated `ai_tone_lint.py --score` so broad contrast, negative-first, colon-led, quoted-label, and plus-stack patterns can fail automatically.
 - Re-tested Cases 9-11 and replaced the outputs below.
 
+## Iteration 7
+
+The main evaluation set was expanded from 16 to 50 cases so the skill is tested across more writing, document, slide, bilingual, support, product, research, and image-prompt situations.
+
+Changes made after Iteration 7:
+
+- Added 34 new cases across Chinese writing, English and bilingual polish, PPT/document de-templating, and image prompt de-AI-styling.
+- Kept the 95-point penalty gate on every accepted humanized output.
+- Updated `evals/prompts.md` so every new report case has a matching fixture.
+
 ## Chinese writing naturalization
 
 ### Case 1
@@ -506,9 +516,910 @@ Score 100 / 100, threshold 95. Findings: none.
 
 Adds purpose, composition, color constraints, typography space, and text handling.
 
+## Expanded coverage cases
+
+### Case 17
+
+**Prompt**
+
+把这段团队通知改得自然一点，适合发在项目群里。
+
+**Baseline AI-ish output**
+
+各位同事，为了进一步提升项目协同效率，确保本周版本发布目标顺利达成，请大家积极配合相关工作安排。测试同学需尽快完成回归验证，研发同学需及时修复问题，产品同学需持续跟进需求闭环。
+
+**Humanized output**
+
+大家同步一下本周发版节奏。测试今天先跑主流程回归，问题单按阻塞程度标出来；研发优先看支付和导入两个模块，其他小问题先放到明天上午统一处理。产品这边今晚把需求变更和验收口径补齐，避免明天边测边改。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Turns empty coordination language into owners, timing, and concrete work order.
+
+### Case 18
+
+**Prompt**
+
+把这段产品更新说明改得像真实产品经理写的。
+
+**Baseline AI-ish output**
+
+本次版本升级围绕用户体验优化和功能完善展开，新增消息筛选能力，优化列表加载速度，并修复若干已知问题，致力于为用户带来更加高效、稳定、便捷的使用体验。
+
+**Humanized output**
+
+这个版本主要改了三处。消息页现在可以按未读、@我、评论筛选，找通知会快一点；列表首次加载减少了一段空白等待；另外修了附件预览偶尔打不开的问题。已经更新到最新版的用户可以直接使用，不需要重新配置。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Names visible changes and keeps the tone close to a real release note.
+
+### Case 19
+
+**Prompt**
+
+改写这段创始人公开说明，要克制、可信。
+
+**Baseline AI-ish output**
+
+对于近期发货延迟给用户造成的不便，我们深表歉意。我们高度重视每一位用户的体验，将持续优化供应链管理能力，提升履约效率，以更加负责任的态度回馈广大用户的信任。
+
+**Humanized output**
+
+这批订单确实发晚了。主要原因是周一到仓的外壳有一批划痕，返工比预期多了两天。已经付款的订单会在本周五前全部发出，物流单号会短信同步。等不及的用户可以直接申请退款，我们当天处理。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Replaces PR wording with reason, shipping date, refund path, and accountability.
+
+### Case 20
+
+**Prompt**
+
+把这段学习心得改得更像个人记录。
+
+**Baseline AI-ish output**
+
+学习英语的关键不是短期突击，而是建立长期坚持的习惯。通过每天背单词、听听力和进行口语练习，可以逐步提升综合语言能力，实现自我成长。
+
+**Humanized output**
+
+最近学英语最有用的办法反而很小。每天早上听 12 分钟新闻，晚上只复盘 8 个生词，周末再把这一周说不顺的句子整理一遍。量不大，所以能一直做下去。三周下来，开会时至少不会每句话都先在脑子里翻译一遍。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Keeps the habit idea but grounds it in small routines and a believable outcome.
+
+### Case 21
+
+**Prompt**
+
+把这段投研风险提示改得更像内部备忘录。
+
+**Baseline AI-ish output**
+
+该标的虽然具备较强成长性，但仍需警惕多重风险因素，包括下游需求波动、原材料价格上涨、客户集中度较高以及行业竞争加剧等因素对公司盈利能力产生的不利影响。
+
+**Humanized output**
+
+这家公司短期先看两个风险。第一是前三大客户占比太高，明年议价如果提前发生，毛利率会先受压。第二是铜价和运费这两个成本项，目前还没有看到完整传导机制。行业竞争可以继续跟踪，但对下个季度业绩影响没那么直接。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Ranks risks and separates near-term earnings pressure from broader monitoring items.
+
+### Case 22
+
+**Prompt**
+
+改写这封候选人拒信，要真诚但不拖沓。
+
+**Baseline AI-ish output**
+
+非常感谢您参与本次面试流程。经过综合评估，我们认为您的经历与当前岗位要求仍存在一定差距，因此很遗憾本次无法继续推进。祝您未来职业发展顺利。
+
+**Humanized output**
+
+感谢你这次来聊。我们讨论后决定先推进另一位候选人，他在企业客户实施这一块的经验和这个岗位更贴近。你的产品判断和表达都给我们留下了印象，后面如果有更偏策略或增长的岗位，我会再联系你。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Keeps the rejection clear while giving a specific, respectful reason.
+
+### Case 23
+
+**Prompt**
+
+把这段社群活动邀请改得更像人写的。
+
+**Baseline AI-ish output**
+
+为了帮助大家更好地了解 AI 工具在个人成长和职场效率提升中的应用价值，我们将举办一次线上分享活动，欢迎大家积极报名参与，共同探索 AI 时代的新机遇。
+
+**Humanized output**
+
+这周四晚上 8 点做一次小分享，主题很具体，怎么把 AI 用在周报、面试准备和资料整理里。不会讲大趋势，主要看几个真实例子。适合刚开始用 AI、但还没形成固定方法的人。想来的同学在群接龙，我提前发会议链接。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Turns a generic invitation into topic, time, audience, and signup action.
+
+### Case 24
+
+**Prompt**
+
+把这段运营 SOP 改得更可执行。
+
+**Baseline AI-ish output**
+
+用户反馈需要及时响应并形成闭环，相关负责人应根据问题类型进行分类处理，持续优化用户体验，并通过数据分析不断提升运营效率。
+
+**Humanized output**
+
+收到用户反馈后先按三类处理。支付、登录、数据丢失直接标红，10 分钟内拉研发看；功能建议进需求池，每周三集中评估；普通咨询由客服当天回复。每条反馈都要留下处理结果和下一步动作，周五运营汇总一页表。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Adds categories, response times, owners, and a weekly artifact.
+
+### Case 25
+
+**Prompt**
+
+把这段用户评价改得真实一点，少一点广告感。
+
+**Baseline AI-ish output**
+
+这款笔记软件极大提升了我的工作效率，界面简洁美观，功能强大完善，让我在学习和工作中都能获得前所未有的流畅体验，强烈推荐给每一个追求高效的人。
+
+**Humanized output**
+
+我主要拿它记会议和整理读书笔记。好用的地方是搜索快，之前写过的内容不用翻很久；同步偶尔会慢半拍，但还能接受。整体更适合每天都有零散记录的人，重度排版需求可能要再配合别的工具。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Adds usage context, a real limitation, and a narrower recommendation.
+
+### Case 26
+
+**Prompt**
+
+把这段论文致谢改得自然、得体。
+
+**Baseline AI-ish output**
+
+在论文完成过程中，我得到了导师、同学和家人的大力支持与帮助，在此向所有给予我关心、指导和鼓励的人表示最诚挚的感谢。
+
+**Humanized output**
+
+这篇论文从选题到定稿，导师给了很多具体建议，尤其是在研究问题收窄和章节结构调整上。几位同学帮我看过初稿，也提醒了不少表述上的问题。家人一直给我留出安静写作的时间，这一点对我很重要。谨在这里向他们表示感谢。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Keeps the formal setting while replacing generic thanks with concrete support.
+
+### Case 27
+
+**Prompt**
+
+Rewrite this renewal email so it sounds like a real account manager.
+
+**Baseline AI-ish output**
+
+Dear Alex, we are excited to continue partnering with your team and would like to proactively discuss renewal options that can unlock additional value across your organization while ensuring a seamless continuation of service.
+
+**Humanized output**
+
+Hi Alex,
+
+Your current plan renews at the end of August, so I wanted to start the conversation early. Usage has been steady across the support and ops teams, and the only open question I see is whether you want to add seats for finance. Are you free Tuesday or Wednesday for a 20-minute renewal check-in?
+
+Best,
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Replaces sales phrasing with timing, usage context, and a specific meeting ask.
+
+### Case 28
+
+**Prompt**
+
+Rewrite this founder update after missing a target.
+
+**Baseline AI-ish output**
+
+While we did not fully achieve our planned growth target this quarter, we made meaningful progress across product, sales, and customer success, and remain confident in our ability to execute against our strategic roadmap.
+
+**Humanized output**
+
+We missed the quarter's growth target. The main issue was conversion after trial, especially in accounts where setup required customer data cleanup. Product shipped the import checklist late, and sales kept pushing deals into trial before that gap was fixed. This month we are moving two engineers onto activation and pausing outbound into the healthcare segment until the setup path is cleaner.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Keeps the miss visible and names the operational fix without glossy reassurance.
+
+### Case 29
+
+**Prompt**
+
+Make this changelog entry more useful for users.
+
+**Baseline AI-ish output**
+
+We have optimized the dashboard experience with enhanced filtering capabilities, improved performance, and resolved multiple issues to provide a smoother and more efficient workflow for all users.
+
+**Humanized output**
+
+Dashboard filters now remember your last view, so you can come back to the same region, owner, and status without setting them again. Large tables also load faster on first open. We fixed the bug where exported CSV files sometimes dropped the status column.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Names the user-visible changes and one specific fix.
+
+### Case 30
+
+**Prompt**
+
+Polish this professional bio without making it sound like a resume template.
+
+**Baseline AI-ish output**
+
+I am a strategic, innovative, and collaborative product leader with a proven track record of driving cross-functional alignment, delivering scalable solutions, and creating value through technology-enabled transformation.
+
+**Humanized output**
+
+I build B2B product teams around messy operational workflows. Most of my work has been in support tools, internal automation, and the handoff between product, design, and implementation. I care most about products that make repeated work easier to see and easier to finish.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Replaces broad leadership claims with domain, work type, and product preference.
+
+### Case 31
+
+**Prompt**
+
+Rewrite this support reply in friendly, plain English.
+
+**Baseline AI-ish output**
+
+We apologize for the inconvenience you are experiencing. Please be assured that our team is actively investigating this matter and will provide further updates as soon as possible.
+
+**Humanized output**
+
+I checked your account and the export is failing at the file generation step. We are re-running it now and should have a new file ready within 30 minutes. I will send the download link in this thread once it finishes.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Turns empty assurance into status, timing, and next action.
+
+### Case 32
+
+**Prompt**
+
+Polish this bilingual product tagline for an AI note-taking tool.
+
+**Baseline AI-ish output**
+
+AI 驱动的智能会议纪要助手 that empowers teams to unlock productivity, capture every insight, and build a seamless collaboration ecosystem.
+
+**Humanized output**
+
+AI meeting notes for teams that need decisions, owners, and follow-ups in one place. 开完会不用再翻录音找谁负责什么。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Keeps the bilingual format but makes the benefit concrete.
+
+### Case 33
+
+**Prompt**
+
+Make this abstract paragraph less inflated while keeping an academic tone.
+
+**Baseline AI-ish output**
+
+This study provides a comprehensive and innovative exploration of how digital platforms fundamentally transform organizational knowledge flows and generate significant implications for future research and managerial practice.
+
+**Humanized output**
+
+This study examines how digital platforms change the way teams document, search for, and reuse internal knowledge. Its main contribution is a process-level account of where knowledge flow slows down and which platform features make reuse easier to observe.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Keeps the academic register while narrowing the contribution.
+
+### Case 34
+
+**Prompt**
+
+Make this meeting follow-up sound less stiff.
+
+**Baseline AI-ish output**
+
+Thank you for the productive discussion today. As aligned during the meeting, we will move forward with the proposed implementation plan and coordinate with relevant stakeholders to ensure timely execution.
+
+**Humanized output**
+
+Good to speak today. I will send the revised rollout plan by Thursday morning, including the migration steps and owner list. Once you confirm the support window, we can lock the launch date and share it with the customer success team.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Replaces meeting boilerplate with deliverable, timing, and dependency.
+
+### Case 35
+
+**Prompt**
+
+Rewrite this fundraising memo sentence in sharper investor language.
+
+**Baseline AI-ish output**
+
+Our company is positioned at the intersection of AI, workflow automation, and enterprise productivity, creating a unique opportunity to capture significant market share in a rapidly evolving landscape.
+
+**Humanized output**
+
+The wedge is customer support teams that still move escalation context across tickets, calls, and spreadsheets. Our product starts with escalation review, where managers already feel the time cost and where the first 20 customers are using the workflow every week.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Moves from category positioning to wedge, buyer pain, and proof.
+
+### Case 36
+
+**Prompt**
+
+Turn this roadmap slide into a clearer product slide.
+
+**Baseline AI-ish output**
+
+Q3 roadmap: enhance onboarding, strengthen analytics, improve collaboration, optimize mobile experience, and continue building scalable infrastructure to support future growth.
+
+**Humanized output**
+
+**Q3 roadmap should reduce setup time first**
+
+1. Onboarding gets the first two sprints because new teams still need too much help importing data.
+2. Analytics comes next, focused on activation and weekly usage. The full reporting suite stays outside this quarter.
+3. Mobile improvements stay limited to approval review and status checks.
+4. Infrastructure work continues in the background where it protects launch reliability.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Adds sequencing and tradeoffs while preserving all roadmap areas.
+
+### Case 37
+
+**Prompt**
+
+Rewrite this board update slide for clarity.
+
+**Baseline AI-ish output**
+
+Highlights: revenue continued to grow; challenges: sales cycle lengthened; opportunities: new vertical expansion; next steps: accelerate GTM execution and strengthen product differentiation.
+
+**Humanized output**
+
+**Revenue is still growing, but sales cycles are stretching**
+
+- New pipeline is coming from the same core buyer, so vertical expansion can wait until conversion is steadier.
+- The near-term watch item is cycle length by deal size.
+- GTM work this month should focus on cleaner qualification and sharper proof for the current segment.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Turns a template slide into a board-level readout and next focus.
+
+### Case 38
+
+**Prompt**
+
+Rewrite this PRD opening so engineering can act on it.
+
+**Baseline AI-ish output**
+
+To improve user engagement and drive long-term retention, we propose building a personalized notification system that can deliver the right information to the right user at the right time.
+
+**Humanized output**
+
+Users miss follow-up tasks after a meeting because the app only stores notes and does not surface pending owners. The first version should send one daily digest for tasks due in the next 48 hours. Scope is limited to tasks created from meeting notes, with email as the only delivery channel.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Defines problem, trigger, channel, and first scope.
+
+### Case 39
+
+**Prompt**
+
+De-template this OKR review paragraph.
+
+**Baseline AI-ish output**
+
+This quarter, the team made strong progress toward our objectives, achieved meaningful improvements in key results, and identified several opportunities for continued optimization in the next cycle.
+
+**Humanized output**
+
+The team improved activation from 38 percent to 46 percent, mainly after we simplified setup for invited teammates. Retention did not move much, and interviews point to a handoff gap after the first project. Next cycle should focus on the second-week experience rather than adding another acquisition channel.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Adds result, miss, evidence, and next-cycle focus.
+
+### Case 40
+
+**Prompt**
+
+Make this sales deck page less generic.
+
+**Baseline AI-ish output**
+
+Our solution helps enterprises streamline workflows, improve collaboration, reduce costs, and unlock data-driven insights through an integrated platform designed for modern teams.
+
+**Humanized output**
+
+**For support leaders managing escalations across tools**
+
+Before, a manager checks the ticket, call notes, Slack thread, and spreadsheet before deciding what happened. With this workflow, the escalation summary, owner, deadline, and customer status sit on one page. The first use case is weekly escalation review.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Narrows the buyer and shows a concrete before/after workflow.
+
+### Case 41
+
+**Prompt**
+
+Rewrite this research memo summary in a less AI-ish way.
+
+**Baseline AI-ish output**
+
+The market demonstrates substantial growth potential, supported by favorable policy trends, expanding customer demand, and continuous technological innovation, creating attractive opportunities for leading companies.
+
+**Humanized output**
+
+The setup is worth tracking, but the current evidence is still early. Policy support has improved project approvals, and demand is visible in tender volume. The next check is whether leading suppliers convert those tenders into signed orders with delivery schedules. Valuation should stay tied to confirmed backlog rather than market-size language.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Moves from broad opportunity language to evidence and valuation discipline.
+
+### Case 42
+
+**Prompt**
+
+Rewrite this onboarding document opening for new employees.
+
+**Baseline AI-ish output**
+
+Welcome to the company. This document is designed to help you quickly understand our culture, workflows, tools, and collaboration practices so that you can integrate into the team efficiently.
+
+**Humanized output**
+
+Welcome. Your first week will be easier if you start with three things in this order. Set up the core tools, read the team operating notes, then book short intro calls with your manager and project buddy. This guide is meant to help you find the right documents and avoid asking the same setup questions twice.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Gives new hires an actionable first-week sequence.
+
+### Case 43
+
+**Prompt**
+
+De-template this pricing proposal paragraph.
+
+**Baseline AI-ish output**
+
+Our pricing model is designed to provide flexible, scalable, and cost-effective options for organizations of all sizes, ensuring that every customer can select the plan that best meets their evolving business needs.
+
+**Humanized output**
+
+Pricing should follow the rollout path. Start with the team plan if fewer than 30 people need access and usage is still concentrated in one department. Move to the enterprise plan when SSO, audit logs, or cross-department reporting becomes part of the buying requirement. That keeps the first contract smaller and leaves room to expand after adoption is visible.
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Turns abstract pricing flexibility into decision guidance.
+
+### Case 44
+
+**Prompt**
+
+Humanize this workshop recap.
+
+**Baseline AI-ish output**
+
+The workshop generated valuable insights across customer needs, product opportunities, and future innovation directions. Participants actively contributed ideas and aligned on several strategic priorities for follow-up execution.
+
+**Humanized output**
+
+The workshop produced two concrete outputs. We agreed that onboarding friction is the first customer problem to tackle, and we collected 14 examples of where setup breaks. The open question is whether the fix belongs in product, implementation, or both. Priya will turn the notes into a one-page decision memo by Friday.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Captures decisions, open question, owner, and artifact.
+
+### Case 45
+
+**Prompt**
+
+Make this restaurant hero image prompt less generic.
+
+**Baseline AI-ish output**
+
+Beautiful modern restaurant interior, warm cinematic lighting, elegant tables, cozy atmosphere, premium dining experience, ultra-realistic, 8K, highly detailed, award-winning photography.
+
+**Humanized output**
+
+Wide hero photo for a neighborhood restaurant website. Camera at seated eye level near a two-person table, with the bar and open kitchen softly visible in the back. Early evening window light, warm pendant lamps, linen napkins, water glasses with slight reflections, one server crossing the frame. Leave the upper-left area calm for headline text.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Replaces quality tags with use case, camera height, scene details, and text-safe space.
+
+### Case 46
+
+**Prompt**
+
+Rewrite this mobile app onboarding illustration prompt as art direction.
+
+**Baseline AI-ish output**
+
+Friendly futuristic app onboarding illustration showing people using AI productivity tools, clean modern style, gradient background, floating cards, 3D icons, delightful and engaging.
+
+**Humanized output**
+
+Onboarding illustration for the first screen of a task-planning app. Show one person reviewing a short task list on a phone while a laptop nearby shows simple calendar blocks. Flat editorial style, soft off-white background, small blue and green accents, clear empty space at the top for app copy. Keep UI shapes simple and unreadable.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Defines screen purpose, subject action, style, palette, and text handling.
+
+### Case 47
+
+**Prompt**
+
+De-AI this children's book cover prompt.
+
+**Baseline AI-ish output**
+
+Magical whimsical children's book cover with a brave little girl exploring a dreamy forest full of glowing creatures, enchanting atmosphere, vibrant colors, masterpiece, highly detailed, fantasy style.
+
+**Humanized output**
+
+Children's book cover for ages 6 to 8. A girl in a yellow raincoat stands at the edge of a damp forest path, holding a small red lunchbox. Fireflies gather near a hollow tree, but the scene stays gentle rather than scary. Leave the top quarter clear for title lettering and the lower-right corner open for author name.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Adds audience, cover layout, focal character, props, and mood.
+
+### Case 48
+
+**Prompt**
+
+Make this ecommerce lifestyle image prompt more realistic.
+
+**Baseline AI-ish output**
+
+Stunning lifestyle photo of a premium ceramic desk lamp in a beautiful minimalist home office, soft cinematic lighting, elegant decor, hyper-realistic, luxury aesthetic, trending design.
+
+**Humanized output**
+
+Lifestyle product photo for a ceramic desk lamp. Place the lamp on a walnut desk beside a closed notebook, a pencil, and a half-full coffee cup. Morning light from a window on the right, matte ceramic texture, visible power cord tucked behind the base, neutral wall, modest home office setting.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Makes the product scale, material, setting, and everyday context visible.
+
+### Case 49
+
+**Prompt**
+
+Rewrite this conference keynote background prompt.
+
+**Baseline AI-ish output**
+
+Futuristic AI conference stage background with glowing network lines, abstract data waves, blue purple gradient, high-tech atmosphere, epic cinematic lighting, ultra-detailed.
+
+**Humanized output**
+
+Wide keynote background for a 16:9 stage screen. Use a dark neutral base with a slow field of thin data lines moving diagonally across the right side. Keep the center-left area quiet for speaker silhouette and title overlay. Low contrast, no readable text, no bright shapes near the podium area.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Translates generic tech atmosphere into stage-safe composition and projection constraints.
+
+### Case 50
+
+**Prompt**
+
+Turn this science explainer image prompt into clear visual direction.
+
+**Baseline AI-ish output**
+
+Beautiful detailed illustration of cells communicating through molecular signals, glowing particles, vibrant colors, futuristic biomedical visualization, 8K, masterpiece, highly detailed, educational.
+
+**Humanized output**
+
+Educational figure for a high-school biology explainer. Show three cells arranged left to right, with small messenger molecules moving from the first cell to receptors on the second. Use a clean cutaway style, muted teal and coral accents, and leave blank space under each cell for labels added later. Keep the biology simplified and readable.
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Specifies audience, diagram structure, visual hierarchy, and label space.
+
 ## Aggregate Assessment
 
-Final pass rate: 16 of 16 cases meet the rubric passing bar.
+Final pass rate: 50 of 50 cases meet the rubric passing bar.
 
 ## Penalty Gate Result
 

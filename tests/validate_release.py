@@ -89,6 +89,12 @@ def require_count(text: str, pattern: str, minimum: int, label: str) -> None:
         raise AssertionError(f"Expected at least {minimum} {label}, found {count}")
 
 
+def require_exact_count(text: str, pattern: str, expected: int, label: str) -> None:
+    count = len(re.findall(pattern, text, flags=re.IGNORECASE | re.MULTILINE))
+    if count != expected:
+        raise AssertionError(f"Expected exactly {expected} {label}, found {count}")
+
+
 def extract_humanized_blocks(text: str, label: str) -> list[str]:
     blocks = [
         match.group("body").strip()
@@ -303,11 +309,12 @@ def check_evals() -> None:
         require(prompts, category, "prompt category")
         require(report, category, "report category")
 
-    require_count(report, r"^### Case \d+", 10, "evaluation cases")
-    require_count(report, r"\*\*Baseline AI-ish output\*\*", 10, "baseline outputs")
-    require_count(report, r"\*\*Humanized output\*\*", 10, "humanized outputs")
-    require_count(report, r"\*\*Penalty gate\*\*", 16, "per-case penalty gate scores")
-    require_count(report, r"Score \d+ / 100, threshold 95\. Findings:", 16, "per-case penalty gate annotations")
+    require_exact_count(prompts, r"^### Case \d+", 50, "prompt cases")
+    require_exact_count(report, r"^### Case \d+", 50, "evaluation cases")
+    require_exact_count(report, r"\*\*Baseline AI-ish output\*\*", 50, "baseline outputs")
+    require_exact_count(report, r"\*\*Humanized output\*\*", 50, "humanized outputs")
+    require_exact_count(report, r"\*\*Penalty gate\*\*", 50, "per-case penalty gate scores")
+    require_exact_count(report, r"Score \d+ / 100, threshold 95\. Findings:", 50, "per-case penalty gate annotations")
     require(report, "Iteration 1", "iteration log")
     require(report, "Iteration 2", "iteration log")
     require(report, "Iteration 3", "iteration log")
@@ -317,6 +324,7 @@ def check_evals() -> None:
     for phrase in [
         "Penalty Gate Result",
         "Threshold: 95",
+        "Final pass rate: 50 of 50 cases meet the rubric passing bar.",
         "Forced Chinese contrast: 0",
         "Problem-not-in frame: 0",
         "Trailing not-frame: 0",
