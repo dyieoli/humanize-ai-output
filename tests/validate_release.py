@@ -287,11 +287,51 @@ def check_readme() -> None:
         "Ethics",
         "Evaluation",
         "humanize-ai-output",
+        "50 common prompts",
+        "50 eval cases are documented",
+        "Penalty gate",
     ]:
         require(body, phrase, "README coverage")
     for placeholder in ["<owner>", "<your", "YOUR_GITHUB_USERNAME"]:
         if placeholder.lower() in body.lower():
             raise AssertionError(f"README still contains publication placeholder: {placeholder}")
+    for stale in [
+        "The beta headline probably is not the useful framing anymore",
+        "现在的问题不是工具不够多",
+        "16 common prompts",
+        "At least 10 eval cases are documented",
+        "Our current advantage is customer workflow depth, not model capability alone",
+        "Decision needed:",
+        "Growth is no longer the question",
+    ]:
+        if stale.lower() in body.lower():
+            raise AssertionError(f"README contains stale release example or count: {stale}")
+
+
+def check_public_examples() -> None:
+    example_paths = [
+        ROOT / "examples" / "chinese-writing" / "project-update.txt",
+        ROOT / "examples" / "chinese-writing" / "customer-apology.txt",
+        ROOT / "examples" / "ppt-outline" / "executive-slide.md",
+        ROOT / "examples" / "image-prompts" / "poster-prompt.txt",
+        ROOT / "examples" / "image-prompts" / "portrait-prompt.txt",
+        SKILL / "references" / "examples.md",
+    ]
+    for path in example_paths:
+        body = read(path)
+        for stale in [
+            "The beta headline probably is not the useful framing anymore",
+            "现在的问题不是工具不够多",
+            "Our current advantage is customer workflow depth, not model capability alone",
+            "Decision needed:",
+            "Growth is no longer the question",
+            "Recommendation: fix ownership",
+        ]:
+            if stale.lower() in body.lower():
+                raise AssertionError(
+                    f"Public example contains stale or forbidden phrasing: "
+                    f"{path.relative_to(ROOT)} -> {stale}"
+                )
 
 
 def check_evals() -> None:
@@ -420,6 +460,7 @@ def main() -> int:
         check_references,
         check_scripts,
         check_readme,
+        check_public_examples,
         check_evals,
         check_openai_yaml,
         check_publication_metadata,

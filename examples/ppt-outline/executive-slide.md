@@ -6,11 +6,11 @@
 
 ## After
 
-**Growth is no longer the question. Defensibility is.**
+**Retention features should lead the next segment plan**
 
 - The category is expanding, but new entrants are compressing feature gaps within 6 to 9 months.
-- Our current advantage is customer workflow depth, not model capability alone.
-- Decision needed: prioritize retention features for existing accounts before opening the next segment.
+- Customer workflow depth is the current advantage.
+- Prioritize retention features for existing accounts before opening the next segment.
 
 ## What changed
 

@@ -8,11 +8,11 @@
 
 **After**
 
-> 这件事的关键在组织分工。现在的问题不是工具不够多，而是需求、数据和审批分散在三条线上，没人对最终交付负责。第一步可以先固定一个跨部门 owner，把每周重复出现的审批和数据核对列出来，再决定哪些环节值得自动化。
+> 这件事的关键在组织分工。需求、数据和审批分散在三条线上，没人对最终交付负责。第一步可以先固定一个跨部门 owner，把每周重复出现的审批和数据核对列出来，再决定哪些环节值得自动化。
 
 **What changed**
 
-- Kept one useful contrast and removed the slogan-like chain.
+- Removed forced contrast and the slogan-like chain.
 - Added owner, sequence, and a concrete first move.
 - Reduced abstract phrases like `协同发力` and `增长新引擎`.
 
@@ -24,12 +24,12 @@
 
 **After**
 
-> The beta headline probably is not the useful framing anymore. What matters now is whether those 12 design partners keep using the review workflow, and whether admin controls stop blocking rollout. If July is about activation and retention, keep the team there. New feature work can wait.
+> The useful signal now is whether those 12 design partners keep using the review workflow after the first try, or whether it is still mostly interesting in a demo. Next step we should focus on whether admin controls stop blocking rollout. If July is about activation and retention, keep the team there. New feature work can wait.
 
 **What changed**
 
 - Replaced investor-speak with milestones and friction.
-- Added a practical next-month focus with a softer, less model-polished pivot.
+- Added a practical adoption signal and next-month focus.
 - Kept the voice professional without generic polish.
 
 ## Bilingual Profile
@@ -56,12 +56,12 @@
 
 **After**
 
-> **Recommendation: fix ownership before adding more AI tools**
+> **Fix ownership before adding more AI tools**
 >
 > - Name one owner for each repeated workflow.
 > - Standardize the input and review criteria.
 > - Automate only the checks that repeat every week.
-> - Track one success signal: hours saved per completed handoff.
+> - Track hours saved per completed handoff.
 
 **What changed**
 
