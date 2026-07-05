@@ -77,6 +77,17 @@ Changes made after Iteration 7:
 - Kept the 95-point penalty gate on every accepted humanized output.
 - Updated `evals/prompts.md` so every new report case has a matching fixture.
 
+## Iteration 8
+
+Manual review found that the lint rule for Chinese contrast still had a structural blind spot. It caught same-sentence `不是...而是...` and `并非...而是...` patterns, but missed `而非` variants and split-sentence forms such as `不是 A。这是 B。` or `不是 A。而是 B。`.
+
+Changes made after Iteration 8:
+
+- Added `而非` coverage to the Chinese forced-contrast rules.
+- Added an adjacent-sentence heuristic for split-sentence contrast.
+- Corrected the Case 54 note so it no longer implies that the earlier lint version had already covered split-sentence contrast.
+- Clarified that the 60/60 result is an internal regression result and still needs external blind review for stronger evidence.
+
 ## Chinese writing naturalization
 
 ### Case 1
@@ -1521,7 +1532,7 @@ Score 100 / 100, threshold 95. Findings: none.
 
 **Notes**
 
-Catches both split contrast and `并非...而在...`-style framing.
+The accepted output avoids both the split-sentence contrast and the `并非...而在...` frame. Earlier lint versions did not automatically catch the split form; the current rule adds an adjacent-sentence heuristic for `不是 A。这是/而是 B。`.
 
 ### Case 55
 
@@ -1695,6 +1706,7 @@ Forbidden-structure counts across accepted humanized outputs:
 
 - Forced Chinese contrast: 0
 - Synonym forced contrast: 0
+- Split-sentence contrast: 0
 - Problem-not-in frame: 0
 - Negative-first opening: 0
 - Broad English negative contrast: 0
@@ -1716,4 +1728,5 @@ Remaining limitations:
 
 - If source text lacks real facts, the skill must either ask for details or clearly mark inserted details as placeholders.
 - For regulated, academic, legal, medical, or investment content, meaning preservation and source fidelity matter more than natural style.
+- The 60/60 result is an internal regression signal. A stronger quality claim needs blind review from a separate evaluator or a clean-context evaluation run.
 - The skill improves prompt and copy quality. It should not be positioned as an AI-detection bypass tool.

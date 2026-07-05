@@ -24,8 +24,8 @@ class Pattern:
 
 
 PATTERNS = [
-    Pattern("CN01", "forced Chinese contrast", r"不是[^。；\n]{1,80}而是|是[^。；\n]{1,80}而不是|并非[^。；\n]{1,80}而(?:是|在)", "Keep only if it clarifies a real boundary.", 40),
-    Pattern("CN02", "problem-not-in Chinese contrast", r"问题不在[^。；\n]{1,80}而在", "State the focus directly before adding context.", 40),
+    Pattern("CN01", "forced Chinese contrast", r"(?:不是|并非|并不是)[^。；\n]{1,80}而(?:是|在|非)|是[^。；\n]{1,80}而(?:不是|非)", "Keep only if it clarifies a real boundary.", 40),
+    Pattern("CN02", "problem-not-in Chinese contrast", r"问题不在[^。；\n]{1,80}而(?:在|是|非)", "State the focus directly before adding context.", 40),
     Pattern("CN03", "negative-first Chinese advice", r"(^|[。！？\n])\s*(先别|不建议|不需要|不要)[^。！？\n]{1,80}", "Start from the affirmative action unless the rejected option is specific and necessary.", 25),
     Pattern("CN04", "abstract Chinese slogan", r"赋能|闭环|抓手|生态|底层逻辑|价值沉淀|提质增效|协同发力", "Replace with concrete actors, actions, and outcomes.", 15),
     Pattern("CN05", "mechanical Chinese transition", r"首先|其次|最后|综上所述|值得注意的是", "Use content-shaped transitions or remove.", 10),
@@ -43,11 +43,32 @@ PATTERNS = [
     Pattern("LAY01", "generic design trope", r"\b(three cards|rounded cards|purple gradient|glassmorphism|floating orb|sparkles)\b", "Use layout hierarchy tied to content.", 15),
 ]
 
+SPLIT_CN_CONTRAST = Pattern(
+    "CN06",
+    "split-sentence Chinese contrast",
+    "",
+    "Merge the thought into a direct affirmative sentence or remove the contrast.",
+    40,
+)
+
 
 def read_text(path: str | None) -> str:
     if path:
         return Path(path).read_text(encoding="utf-8")
     return sys.stdin.read()
+
+
+def split_chinese_sentences(text: str) -> list[str]:
+    return [part.strip() for part in re.split(r"[。！？!?；;\n]+", text) if part.strip()]
+
+
+def count_split_chinese_contrast(text: str) -> int:
+    sentences = split_chinese_sentences(text)
+    count = 0
+    for current, following in zip(sentences, sentences[1:]):
+        if re.search(r"(?:不是|并非|并不是)", current) and re.match(r"^(?:这是|这才是|而是|而非|是)", following):
+            count += 1
+    return count
 
 
 def lint(text: str) -> list[tuple[Pattern, int]]:
@@ -56,6 +77,9 @@ def lint(text: str) -> list[tuple[Pattern, int]]:
         count = len(re.findall(pattern.regex, text, flags=re.IGNORECASE | re.DOTALL | re.MULTILINE))
         if count:
             findings.append((pattern, count))
+    split_contrast_count = count_split_chinese_contrast(text)
+    if split_contrast_count:
+        findings.append((SPLIT_CN_CONTRAST, split_contrast_count))
     return findings
 
 

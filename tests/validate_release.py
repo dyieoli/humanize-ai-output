@@ -18,7 +18,7 @@ PENALTY_PATTERNS = [
     (
         "CN_FORCED_CONTRAST",
         "Chinese forced contrast",
-        r"不是[^。；\n]{1,80}而是|是[^。；\n]{1,80}而不是|并非[^。；\n]{1,80}而(?:是|在)|问题不在[^。；\n]{1,80}而在",
+        r"(?:不是|并非|并不是)[^。；\n]{1,80}而(?:是|在|非)|是[^。；\n]{1,80}而(?:不是|非)|问题不在[^。；\n]{1,80}而(?:在|是|非)",
         40,
     ),
     (
@@ -71,6 +71,8 @@ PENALTY_PATTERNS = [
     ),
 ]
 
+SPLIT_CN_CONTRAST_WEIGHT = 40
+
 
 def read(path: Path) -> str:
     if not path.exists():
@@ -109,6 +111,19 @@ def extract_humanized_blocks(text: str, label: str) -> list[str]:
     return blocks
 
 
+def split_chinese_sentences(text: str) -> list[str]:
+    return [part.strip() for part in re.split(r"[。！？!?；;\n]+", text) if part.strip()]
+
+
+def count_split_chinese_contrast(text: str) -> int:
+    sentences = split_chinese_sentences(text)
+    count = 0
+    for current, following in zip(sentences, sentences[1:]):
+        if re.search(r"(?:不是|并非|并不是)", current) and re.match(r"^(?:这是|这才是|而是|而非|是)", following):
+            count += 1
+    return count
+
+
 def penalty_score(text: str) -> tuple[int, list[str]]:
     penalty = 0
     details: list[str] = []
@@ -117,6 +132,14 @@ def penalty_score(text: str) -> tuple[int, list[str]]:
         if count:
             penalty += count * weight
             details.append(f"{code}={count} ({label}, -{count * weight})")
+    split_contrast_count = count_split_chinese_contrast(text)
+    if split_contrast_count:
+        split_penalty = split_contrast_count * SPLIT_CN_CONTRAST_WEIGHT
+        penalty += split_penalty
+        details.append(
+            f"CN_SPLIT_SENTENCE_CONTRAST={split_contrast_count} "
+            f"(split-sentence Chinese contrast, -{split_penalty})"
+        )
     return max(0, 100 - penalty), details
 
 
@@ -291,6 +314,35 @@ def check_scripts() -> None:
             f"ai_tone_lint.py --score must penalize Chinese synonym forced-contrast frames: {bad_cn_synonym_payload}"
         )
 
+    extra_bad_cn_cases = [
+        (
+            "Chinese erfei forced-contrast frames",
+            "这不是简单的用词习惯问题，而非表面的文风差异。",
+        ),
+        (
+            "Chinese split-sentence contrast using 这是",
+            "这次会议的核心不是简单地分配任务。这是一次重新梳理团队协作机制的机会。",
+        ),
+        (
+            "Chinese split-sentence contrast using 而是",
+            "这不是简单的效率提升。而是一次组织能力的系统性升级。",
+        ),
+    ]
+    for label, sample in extra_bad_cn_cases:
+        result = subprocess.run(
+            [sys.executable, str(SKILL / "scripts" / "ai_tone_lint.py"), "--score"],
+            input=sample,
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if result.returncode == 0:
+            raise AssertionError(f"ai_tone_lint.py --score must fail {label}")
+        payload = json.loads(result.stdout)
+        if payload.get("score", 100) >= PENALTY_THRESHOLD:
+            raise AssertionError(f"ai_tone_lint.py --score must penalize {label}: {payload}")
+
 
 def check_readme() -> None:
     body = read(ROOT / "README.md")
@@ -378,15 +430,19 @@ def check_evals() -> None:
     require(report, "Iteration 4", "iteration log")
     require(report, "Iteration 5", "iteration log")
     require(report, "Iteration 6", "iteration log")
+    require(report, "Iteration 8", "iteration log")
     for phrase in [
         "Penalty Gate Result",
         "Threshold: 95",
         "Final pass rate: 60 of 60 cases meet the rubric passing bar.",
         "Forced Chinese contrast: 0",
+        "Split-sentence contrast: 0",
         "Problem-not-in frame: 0",
         "Trailing not-frame: 0",
         "Colon-led label explanation: 0",
         "All accepted humanized outputs scored at least 95",
+        "adjacent-sentence heuristic",
+        "internal regression signal",
     ]:
         require(report, phrase, "penalty gate report")
     for phrase in [
