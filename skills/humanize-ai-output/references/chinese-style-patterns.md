@@ -6,7 +6,7 @@ Use this reference when Chinese output sounds stiff, slogan-like, translated, or
 
 | Pattern | Symptoms | Why it feels AI-ish | Better move |
 |---|---|---|---|
-| 强对照句式滥用 | 高频出现“不是……而是……”“是……而不是……” | 连续纠偏会显得用力，读者抓不到真正重点 | 只在澄清概念边界时保留；其他地方直接陈述，或用“更准确地说”“重点在于”“相比之下” |
+| 强对照句式滥用 | 高频出现“不是……而是……”“并非……而是……”“是……而不是……” | 连续纠偏会显得用力，读者抓不到真正重点 | 只在澄清概念边界时保留；其他地方直接陈述，或用“更准确地说”“重点在于”“相比之下” |
 | 官样抽象词 | 赋能、抓手、闭环、生态、底层逻辑、价值沉淀、提质增效 | 词很大，但缺少谁做什么、改变什么 | 改成具体动作、对象、指标、负责人、时间点 |
 | 机械连接 | 首先/其次/最后、综上所述、值得注意的是 | 短文被写成考试作文或咨询模板 | 按内容关系连接：问题卡在哪、证据是什么、下一步看什么 |
 | 过度排比 | 从 A 到 B，从 C 到 D；既要 A，也要 B，更要 C | 节奏整齐但信息密度低 | 保留最关键的一组，其他改成普通句或删掉 |
@@ -27,7 +27,7 @@ Humanized output must pass a second correction pass before it is shown.
 
 - Start from 100 points. Passing threshold is 95.
 - Count forbidden structures in the candidate output.
-- Major failures: `不是...而是...`, `是...而不是...`, `问题不在...而在...`, and broad negative-first advice. Each one should usually make the candidate fail.
+- Major failures: `不是...而是...`, `并非...而是...`, `是...而不是...`, `问题不在...而在...`, and broad negative-first advice. Each one should usually make the candidate fail.
 - Medium failures: repeated `标题：内容`, `问题：解释`, `指标：解释`, quoted labels, and `X + Y + Z` shorthand.
 - If the score is below 95, revise and rerun. Do not return the candidate yet.
 
@@ -42,6 +42,7 @@ Humanized output must pass a second correction pass before it is shown.
 - PPT 或建议页避免用“先别...”做标题，直接写肯定动作，例如“寻找进度卡壳点”。
 - 指标句少用“xxxx：xxxx”，可以写成“30天重点关注指标—交接消耗时间”。
 - 把“问题不在获客，而在客户试用后的第一周：没人把...”改成“客户试用后的第一周需要重点梳理，使用数据、客户反馈和下一步动作现在没有串起来。”
+- 把“团队效率低下的根源并非成员能力不足，而是缺乏清晰的责任分工”改成“团队效率低主要卡在责任分工和沟通机制上。现阶段更需要先看谁负责、信息怎么同步、问题卡住后由谁拍板。”
 - 把“项目稳步推进”改成“登录模块已联调完成，支付回调还差风控确认，预计周三给测试包。”
 
 ## Natural Connectors
@@ -69,7 +70,7 @@ Use lightly. Do not stack them.
 ## Final Check
 
 - 是否保留了事实、数字、人物、时间和限制条件。
-- 是否减少了强对比句式，尤其是“不是……而是……”和“是……而不是……”。
+- 是否减少了强对比句式，尤其是“不是……而是……”“并非……而是……”和“是……而不是……”。
 - 是否消除了“问题不在……而在……”这类段落开头判断。
 - 是否通过 95 分惩罚门槛；没有通过就继续修改。
 - 是否把抽象词换成了动作、对象、指标或时点。

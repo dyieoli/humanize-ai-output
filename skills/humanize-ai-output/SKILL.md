@@ -26,13 +26,13 @@ Do not claim to bypass AI detection, falsify authorship, fabricate human experie
    - If tools are available, run `scripts/style_seed.py --task <chinese|english|bilingual|ppt|document|image>`.
    - If tools are not available, silently choose one variation recipe from `references/variation-recipes.md`.
 4. Diagnose the AI-ish patterns.
-   - For Chinese, read `references/chinese-style-patterns.md` when the draft has strong contrast phrases like `不是...而是...`, slogan-like wording, or stiff transitions.
+   - For Chinese, read `references/chinese-style-patterns.md` when the draft has strong contrast phrases like `不是...而是...` or `并非...而是...`, slogan-like wording, or stiff transitions.
    - For English or bilingual text, read `references/english-bilingual-patterns.md` when the draft has corporate fog, translationese, or over-polished rhythm.
    - For slides, documents, and design briefs, read `references/design-and-ppt-patterns.md`.
    - For image prompts, read `references/image-prompt-patterns.md`.
 5. Rewrite in passes:
    - Cut generic openings, recap endings, and low-information phrases.
-   - Replace forced contrast patterns such as `不是...而是...`, `是...而不是...`, `not only...but also`, and over-balanced pairings unless they clarify a real distinction.
+   - Replace forced contrast patterns such as `不是...而是...`, `并非...而是...`, `是...而不是...`, `not only...but also`, and over-balanced pairings unless they clarify a real distinction.
    - Ground claims in concrete subjects, actions, evidence, context, limits, or next steps.
    - Vary sentence length and paragraph weight.
    - Keep enough friction: specific constraints, tradeoffs, real-world detail, and natural imperfection.
@@ -42,7 +42,7 @@ Do not claim to bypass AI detection, falsify authorship, fabricate human experie
 6. Run the Penalty gate before showing the answer.
    - If tools are available, run `scripts/ai_tone_lint.py --score` on the candidate humanized output.
    - Passing threshold is 95. A score below 95 means revise and rerun the check.
-   - Count every forbidden structure before deciding: forced Chinese contrast, `问题不在...而在...`, negative-first advice, broad English `not...but...`, trailing `, not...`, `not...alone`, colon-led explanations, quoted framing labels, and `X + Y + Z` shorthand.
+   - Count every forbidden structure before deciding: forced Chinese contrast, `并非...而是...`, `问题不在...而在...`, negative-first advice, broad English `not...but...`, trailing `, not...`, `not...alone`, colon-led explanations, quoted framing labels, and `X + Y + Z` shorthand.
    - Major contrast failures are high-penalty items. One broad `not model capability alone` or `问题不在获客，而在...` style sentence should usually fail the candidate.
    - Keep looping: rewrite, rescore, and only return the output after the threshold passes.
    - If no tool is available, do the same count manually and treat any major contrast or negative-first opening as a failed pass.
@@ -74,7 +74,7 @@ Prefer direct, natural phrasing over visible rhetorical machinery.
 
 Common AI-ish patterns to reduce:
 
-- Forced contrast: `不是 A, 而是 B`, `是 A, 而不是 B`, `not merely X but Y`.
+- Forced contrast: `不是 A, 而是 B`, `并非 A, 而是 B`, `是 A, 而不是 B`, `not merely X but Y`.
 - Broad negative contrast: `问题不在 A, 而在 B`, `not X, but Y`, trailing `, not X`, and vague `not X alone`.
 - Negative-first advice: opening with `先别`, `不要`, `不需要`, `不建议`, `Do not`, or `Don't` before the useful recommendation.
 - Colon-led explanation: `标题：内容`, `Decision needed: ...`, `The next question is: ...`, or repeated label-plus-explanation lines.

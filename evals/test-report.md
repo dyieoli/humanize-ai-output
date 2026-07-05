@@ -1417,9 +1417,275 @@ Score 100 / 100, threshold 95. Findings: none.
 
 Specifies audience, diagram structure, visual hierarchy, and label space.
 
+## Forced Contrast and Formality Stress Cases
+
+### Case 51
+
+**Prompt**
+
+把这段科研综述改得更像严肃但可读的研究说明。
+
+**Baseline AI-ish output**
+
+基因驱动技术的应用不是单纯的基因编辑效率问题，而是涉及生态系统稳定性、种群动态和跨物种基因流动的系统性风险评估。当前研究普遍认为，需要从分子机制、生态影响和监管框架三个维度协同发力，构建更加完善的生物安全评价体系，为转基因昆虫的田间释放提供科学决策依据。
+
+**Humanized output**
+
+基因驱动技术进入应用场景后，评估重点会落到野外风险上。除了编辑效率，研究者还要看环境稳定性、种群动态，以及基因在不同物种之间流动的可能性。用于转基因昆虫田间释放的生物安全评价，需要把分子机制、野外影响和监管要求放在同一套证据链里讨论。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Removes the `不是...而是...` frame while preserving the scientific risk variables.
+
+### Case 52
+
+**Prompt**
+
+把这段年终个人总结改得自然一点，保留一点正式感。
+
+**Baseline AI-ish output**
+
+回顾这一年，我深刻意识到成长不是一蹴而就的过程，而是持续自我迭代的旅程。无论是工作中面临的挑战，还是生活里的起起伏伏，我都努力保持积极的心态，不断突破自己的舒适区。展望新的一年，我将继续脚踏实地，追求更高质量的自我提升。
+
+**Humanized output**
+
+这一年最大的变化，是我开始更清楚地看见自己的节奏。工作里有几个项目推进得并不轻松，生活上也有一些需要慢慢消化的时刻。好在很多事情没有停在情绪里，我能把问题拆开，一件件处理。新的一年还是想把基本功做扎实，把该复盘的地方复盘清楚。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Keeps a reflective tone without relying on growth slogans.
+
+### Case 53
+
+**Prompt**
+
+把这段产品发布通稿开头改得更像真实发布稿。
+
+**Baseline AI-ish output**
+
+在数字化转型加速的今天，企业对于高效协同办公的需求日益增长。我们很高兴地宣布，全新升级的智能办公平台正式上线，致力于通过 AI 赋能打破部门壁垒，实现数据互联互通，为用户带来更加流畅顺畅的协作体验。
+
+**Humanized output**
+
+我们今天上线新版智能办公平台，重点改善跨部门协作时的信息分散和流程等待。新版本把 AI 辅助整理、任务协同和数据同步放在同一工作台里，团队可以更快确认负责人、当前进度和下一步动作。这次升级会先服务日常办公里反复出现的协作卡点。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Replaces broad digital-transformation setup with product release context and user-facing workflow details.
+
+### Case 54
+
+**Prompt**
+
+把这段会议纪要总结改得更自然，避免强对照套话。
+
+**Baseline AI-ish output**
+
+这次会议的核心不是简单地分配任务。这是一次重新梳理团队协作机制的机会。与会人员一致认为，当前的问题并非资源不足，而在于流程节点之间缺乏有效衔接，导致信息传递滞后。
+
+**Humanized output**
+
+这次会议主要把团队协作机制重新梳理了一遍。任务分配只是其中一部分，大家更关注流程节点之间的衔接。资源投入目前还够用，真正拖慢进度的是交接环节的信息滞后。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Catches both split contrast and `并非...而在...`-style framing.
+
+### Case 55
+
+**Prompt**
+
+把这段读书笔记/书评改得少一点 AI 味。
+
+**Baseline AI-ish output**
+
+读完这本书，我最大的感受是，真正的智慧不是知道所有答案，而是学会提出正确的问题。作者用大量生动的案例告诉我们，成长的关键往往藏在那些看似微不足道的日常选择之中，值得每一位读者细细品味。
+
+**Humanized output**
+
+这本书留下的重点，是作者对提问能力的强调。很多案例并不复杂，却能提醒读者，决定一个人怎么成长的，常常是每天那些很小的选择。它给人的价值，更多在于训练读者把问题问得更准确。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Turns aphoristic contrast into a calmer reading impression.
+
+### Case 56
+
+**Prompt**
+
+把这段简历自我评价改得更具体、更可信。
+
+**Baseline AI-ish output**
+
+本人具备扎实的专业基础和良好的团队协作能力，在过往的工作经历中，始终秉持精益求精的工作态度，善于在压力下保持高效执行力。同时具备较强的学习能力和创新思维，能够快速适应不同的工作环境，为团队创造持续价值。
+
+**Humanized output**
+
+我有扎实的专业基础，也习惯在项目里承担需求梳理、进度跟进和跨团队沟通。遇到时间紧的任务时，我会先确认优先级、交付口径和责任人，再推进执行。对新环境上手较快，复盘时也会把反复出现的问题沉淀成下一次能复用的方法。
+
+**Score**
+
+Meaning 4, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Replaces resume stock phrases with observable work habits.
+
+### Case 57
+
+**Prompt**
+
+把这段公众号推文开头改得自然一点。
+
+**Baseline AI-ish output**
+
+你有没有想过，为什么有些人总能在人群中脱颖而出？答案其实很简单：他们不是天赋异禀，而是掌握了正确的方法论。今天这篇文章，我将从三个维度为大家拆解这个问题，希望能给你带来一些启发。
+
+**Humanized output**
+
+有些人看起来进步很快，背后通常有一套稳定的做事方法。今天这篇文章会从三个具体习惯展开，分别看怎么拆目标、怎么复盘，以及怎么把方法坚持到下一次。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Removes the hook-answer template and starts from the actual topic.
+
+### Case 58
+
+**Prompt**
+
+把这段网络故障客服道歉话术改得真诚、明确。
+
+**Baseline AI-ish output**
+
+非常抱歉给您的使用体验带来不便。我们已高度重视此次网络异常问题，技术团队正在全力排查根本原因，预计将在最短时间内完成修复。后续我们也会持续优化系统稳定性，感谢您一直以来的理解与支持。
+
+**Humanized output**
+
+抱歉，今天的网络异常影响了您的正常使用。技术团队已经在排查相关链路，修复进展会在确认后同步给您。修复完成后，我们会补充这次异常的影响范围和处理方式。期间如果页面还停留在提交状态，可以先保留当前页面，避免重复操作。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 4, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Keeps the apology clear and avoids inventing a root cause.
+
+### Case 59
+
+**Prompt**
+
+Rewrite this English business email feedback request so it sounds natural and concise.
+
+**Baseline AI-ish output**
+
+I hope this email finds you well. I wanted to reach out to kindly request your valuable feedback on the proposal we discussed last week. Your insights are not just important to us, but essential in helping us refine our approach and ensure we deliver a solution that truly meets your needs. Looking forward to hearing your thoughts at your earliest convenience.
+
+**Humanized output**
+
+Hi [Name],
+
+Could you send over feedback on the proposal we discussed last week? The most useful areas for us are scope, rollout timing, and anything that feels hard for your team to adopt. If you can share notes by [date], we can fold them into the next version before our follow-up.
+
+Best,
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Removes generic politeness and broad `not just...but...` emphasis.
+
+### Case 60
+
+**Prompt**
+
+把这段组织效率分析改得自然一点，专门处理“并非...而是...”这类同义强对照。
+
+**Baseline AI-ish output**
+
+团队效率低下的根源并非成员能力不足，而是缺乏清晰的责任分工和统一的沟通机制。要解决这个问题，需要综合考虑组织架构、流程设计和工具支持等多个因素，通过系统性的变革实现效率的整体提升。
+
+**Humanized output**
+
+团队效率低主要卡在责任分工和沟通机制上。现阶段更需要先看谁负责、信息怎么同步，以及问题卡住后由谁拍板。接下来可以把关键流程里的 owner、输入材料和确认时点列清楚，再决定工具怎么配合。
+
+**Score**
+
+Meaning 5, Template reduction 5, Rhythm 5, Specificity 5, Audience fit 5, Ethics 5.
+
+**Penalty gate**
+
+Score 100 / 100, threshold 95. Findings: none.
+
+**Notes**
+
+Confirms that synonym forced contrast is handled by the rewrite and by the lint rule.
+
 ## Aggregate Assessment
 
-Final pass rate: 50 of 50 cases meet the rubric passing bar.
+Final pass rate: 60 of 60 cases meet the rubric passing bar.
 
 ## Penalty Gate Result
 
@@ -1428,6 +1694,7 @@ Threshold: 95.
 Forbidden-structure counts across accepted humanized outputs:
 
 - Forced Chinese contrast: 0
+- Synonym forced contrast: 0
 - Problem-not-in frame: 0
 - Negative-first opening: 0
 - Broad English negative contrast: 0

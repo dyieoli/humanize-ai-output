@@ -18,7 +18,7 @@ PENALTY_PATTERNS = [
     (
         "CN_FORCED_CONTRAST",
         "Chinese forced contrast",
-        r"不是[^。；\n]{1,80}而是|是[^。；\n]{1,80}而不是|问题不在[^。；\n]{1,80}而在",
+        r"不是[^。；\n]{1,80}而是|是[^。；\n]{1,80}而不是|并非[^。；\n]{1,80}而(?:是|在)|问题不在[^。；\n]{1,80}而在",
         40,
     ),
     (
@@ -275,6 +275,22 @@ def check_scripts() -> None:
     if bad_cn_payload.get("score", 100) >= PENALTY_THRESHOLD:
         raise AssertionError(f"ai_tone_lint.py --score must penalize Chinese problem-not-in frames: {bad_cn_payload}")
 
+    bad_cn_synonym_lint = subprocess.run(
+        [sys.executable, str(SKILL / "scripts" / "ai_tone_lint.py"), "--score"],
+        input="团队效率低下的根源并非成员能力不足，而是缺乏清晰的责任分工。",
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if bad_cn_synonym_lint.returncode == 0:
+        raise AssertionError("ai_tone_lint.py --score must fail Chinese synonym forced-contrast frames")
+    bad_cn_synonym_payload = json.loads(bad_cn_synonym_lint.stdout)
+    if bad_cn_synonym_payload.get("score", 100) >= PENALTY_THRESHOLD:
+        raise AssertionError(
+            f"ai_tone_lint.py --score must penalize Chinese synonym forced-contrast frames: {bad_cn_synonym_payload}"
+        )
+
 
 def check_readme() -> None:
     body = read(ROOT / "README.md")
@@ -287,8 +303,8 @@ def check_readme() -> None:
         "Ethics",
         "Evaluation",
         "humanize-ai-output",
-        "50 common prompts",
-        "50 eval cases are documented",
+        "60 common prompts",
+        "60 eval cases are documented",
         "Penalty gate",
         "https://github.com/dyieoli/humanize-ai-output.git",
     ]:
@@ -350,12 +366,12 @@ def check_evals() -> None:
         require(prompts, category, "prompt category")
         require(report, category, "report category")
 
-    require_exact_count(prompts, r"^### Case \d+", 50, "prompt cases")
-    require_exact_count(report, r"^### Case \d+", 50, "evaluation cases")
-    require_exact_count(report, r"\*\*Baseline AI-ish output\*\*", 50, "baseline outputs")
-    require_exact_count(report, r"\*\*Humanized output\*\*", 50, "humanized outputs")
-    require_exact_count(report, r"\*\*Penalty gate\*\*", 50, "per-case penalty gate scores")
-    require_exact_count(report, r"Score \d+ / 100, threshold 95\. Findings:", 50, "per-case penalty gate annotations")
+    require_exact_count(prompts, r"^### Case \d+", 60, "prompt cases")
+    require_exact_count(report, r"^### Case \d+", 60, "evaluation cases")
+    require_exact_count(report, r"\*\*Baseline AI-ish output\*\*", 60, "baseline outputs")
+    require_exact_count(report, r"\*\*Humanized output\*\*", 60, "humanized outputs")
+    require_exact_count(report, r"\*\*Penalty gate\*\*", 60, "per-case penalty gate scores")
+    require_exact_count(report, r"Score \d+ / 100, threshold 95\. Findings:", 60, "per-case penalty gate annotations")
     require(report, "Iteration 1", "iteration log")
     require(report, "Iteration 2", "iteration log")
     require(report, "Iteration 3", "iteration log")
@@ -365,7 +381,7 @@ def check_evals() -> None:
     for phrase in [
         "Penalty Gate Result",
         "Threshold: 95",
-        "Final pass rate: 50 of 50 cases meet the rubric passing bar.",
+        "Final pass rate: 60 of 60 cases meet the rubric passing bar.",
         "Forced Chinese contrast: 0",
         "Problem-not-in frame: 0",
         "Trailing not-frame: 0",

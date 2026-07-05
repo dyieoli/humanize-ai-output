@@ -24,7 +24,7 @@ class Pattern:
 
 
 PATTERNS = [
-    Pattern("CN01", "forced Chinese contrast", r"不是[^。；\n]{1,80}而是|是[^。；\n]{1,80}而不是", "Keep only if it clarifies a real boundary.", 40),
+    Pattern("CN01", "forced Chinese contrast", r"不是[^。；\n]{1,80}而是|是[^。；\n]{1,80}而不是|并非[^。；\n]{1,80}而(?:是|在)", "Keep only if it clarifies a real boundary.", 40),
     Pattern("CN02", "problem-not-in Chinese contrast", r"问题不在[^。；\n]{1,80}而在", "State the focus directly before adding context.", 40),
     Pattern("CN03", "negative-first Chinese advice", r"(^|[。！？\n])\s*(先别|不建议|不需要|不要)[^。！？\n]{1,80}", "Start from the affirmative action unless the rejected option is specific and necessary.", 25),
     Pattern("CN04", "abstract Chinese slogan", r"赋能|闭环|抓手|生态|底层逻辑|价值沉淀|提质增效|协同发力", "Replace with concrete actors, actions, and outcomes.", 15),

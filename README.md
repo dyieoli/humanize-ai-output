@@ -110,7 +110,7 @@ Use $humanize-ai-output to rewrite this image prompt as real art direction.
 
 The public evaluation set lives in [`evals/`](evals/):
 
-- [`evals/prompts.md`](evals/prompts.md): 50 common prompts across four capability areas.
+- [`evals/prompts.md`](evals/prompts.md): 60 common prompts across four capability areas.
 - [`evals/rubric.md`](evals/rubric.md): scoring criteria.
 - [`evals/test-report.md`](evals/test-report.md): baseline outputs, skill outputs, per-case Penalty gate scores, iteration notes, and final assessment.
 
@@ -162,7 +162,7 @@ Please include the original prompt, baseline output, revised output, and a short
 - [x] `SKILL.md` has final frontmatter and no scaffold placeholders.
 - [x] `agents/openai.yaml` matches the final skill purpose.
 - [x] README includes install, usage, examples, evals, and ethics.
-- [x] 50 eval cases are documented.
+- [x] 60 eval cases are documented.
 - [x] Per-case Penalty gate scores are documented.
 - [x] Helper scripts run with `--help`.
 - [x] `python3 tests/validate_release.py` passes.
