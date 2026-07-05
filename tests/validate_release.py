@@ -347,6 +347,10 @@ def check_evals() -> None:
         "过去三个月，销售线索保持稳定，但从试用到付费的转化明显变慢",
         "客户试用后的第一周需要重点梳理",
         "后续分工也先这样定",
+        "近期部分订单发货延迟",
+        "暂不继续后续流程",
+        "我们将在本周四 20:00 举办一场线上分享",
+        "在本论文的选题、写作和修改过程中",
         "The useful signal now is whether those 12 design partners keep using the review workflow",
         "I work on AI product workflows for teams trying to cut manual review",
         "Even if the date is still moving",
@@ -382,6 +386,10 @@ def check_evals() -> None:
         "Our current advantage is customer workflow depth, not model capability alone",
         "Decision needed:",
         "问题不在获客，而在客户试用后的第一周：",
+        "这批订单确实发晚了",
+        "感谢你这次来聊",
+        "这周四晚上 8 点做一次小分享",
+        "这篇论文从选题到定稿",
     ]:
         if forbidden.lower() in review.lower() or forbidden.lower() in report.lower():
             raise AssertionError(f"Forbidden reviewed structure remains: {forbidden}")
