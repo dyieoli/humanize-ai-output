@@ -88,6 +88,16 @@ Changes made after Iteration 8:
 - Corrected the Case 54 note so it no longer implies that the earlier lint version had already covered split-sentence contrast.
 - Clarified that the 60/60 result is an internal regression result and still needs external blind review for stronger evidence.
 
+## Iteration 9
+
+Manual review found three more variants that still escaped the lint rule: same-sentence `不是 A，其实是 B`, adjacent split `不是 A。其实是 B。`, and split contrast with one filler sentence between the negative setup and the positive turn.
+
+Changes made after Iteration 9:
+
+- Added `其实是/其实在` coverage to same-sentence forced-contrast detection.
+- Added `其实是/其实在` to split-sentence continuation detection.
+- Expanded split-sentence detection to a two-sentence window so one neutral filler sentence cannot hide the contrast turn.
+
 ## Chinese writing naturalization
 
 ### Case 1

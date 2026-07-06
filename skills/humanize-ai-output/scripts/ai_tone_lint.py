@@ -24,8 +24,8 @@ class Pattern:
 
 
 PATTERNS = [
-    Pattern("CN01", "forced Chinese contrast", r"(?:不是|并非|并不是)[^。；\n]{1,80}而(?:是|在|非)|是[^。；\n]{1,80}而(?:不是|非)", "Keep only if it clarifies a real boundary.", 40),
-    Pattern("CN02", "problem-not-in Chinese contrast", r"问题不在[^。；\n]{1,80}而(?:在|是|非)", "State the focus directly before adding context.", 40),
+    Pattern("CN01", "forced Chinese contrast", r"(?:不是|并非|并不是)[^。；\n]{1,80}(?:而(?:是|在|非)|其实(?:是|在))|是[^。；\n]{1,80}而(?:不是|非)", "Keep only if it clarifies a real boundary.", 40),
+    Pattern("CN02", "problem-not-in Chinese contrast", r"问题不在[^。；\n]{1,80}(?:而(?:在|是|非)|其实(?:是|在))", "State the focus directly before adding context.", 40),
     Pattern("CN03", "negative-first Chinese advice", r"(^|[。！？\n])\s*(先别|不建议|不需要|不要)[^。！？\n]{1,80}", "Start from the affirmative action unless the rejected option is specific and necessary.", 25),
     Pattern("CN04", "abstract Chinese slogan", r"赋能|闭环|抓手|生态|底层逻辑|价值沉淀|提质增效|协同发力", "Replace with concrete actors, actions, and outcomes.", 15),
     Pattern("CN05", "mechanical Chinese transition", r"首先|其次|最后|综上所述|值得注意的是", "Use content-shaped transitions or remove.", 10),
@@ -50,6 +50,7 @@ SPLIT_CN_CONTRAST = Pattern(
     "Merge the thought into a direct affirmative sentence or remove the contrast.",
     40,
 )
+SPLIT_CN_CONTRAST_WINDOW = 2
 
 
 def read_text(path: str | None) -> str:
@@ -65,8 +66,11 @@ def split_chinese_sentences(text: str) -> list[str]:
 def count_split_chinese_contrast(text: str) -> int:
     sentences = split_chinese_sentences(text)
     count = 0
-    for current, following in zip(sentences, sentences[1:]):
-        if re.search(r"(?:不是|并非|并不是)", current) and re.match(r"^(?:这是|这才是|而是|而非|是)", following):
+    for index, current in enumerate(sentences[:-1]):
+        if not re.search(r"(?:不是|并非|并不是)", current):
+            continue
+        following_window = sentences[index + 1 : index + 1 + SPLIT_CN_CONTRAST_WINDOW]
+        if any(re.match(r"^(?:这是|这才是|而是|而非|其实是|其实在|是)", following) for following in following_window):
             count += 1
     return count
 
